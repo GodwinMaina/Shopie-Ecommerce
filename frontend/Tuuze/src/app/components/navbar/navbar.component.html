@@ -15,10 +15,15 @@
                       <i class="fa-solid fa-user"></i>
                       Account
                   </li>
+                 
                   <li>
-                      <i class="fa-solid fa-cart-shopping"></i>
+                    <a routerLink="/cart">
+                      <i  class="fa-solid fa-cart-shopping"></i>
                       Cart
+                    <span class="count">{{ cartItemCount }}</span>
+                  </a>
                   </li>
+             
               </ul>
           </div>
           <div class="hambuger">

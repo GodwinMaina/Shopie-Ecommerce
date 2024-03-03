@@ -1,6 +1,7 @@
-import bcrypt from 'bcrypt'
+
+
 import mssql from 'mssql'
-import { createProduct, getAllProducts } from '../../productController'
+import { createProduct, getAllProducts, getOneProduct } from '../../productController'
 
 describe("product create", ()=>{
 
@@ -66,7 +67,9 @@ describe('get all products', () => {
     it('Successfully got all products', async () => {
         const mockedResult =
          [
+            {product_id: "2ca503b8-24c7-4f12-a44d-ddc3ad76528d", name: "JEANS BLACK", image: "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/85/785059/7.jpg?9552",description: "Blacky Denim Jeans",quantity: "3,000",category: "Jeans", price: "4,500"},
             {product_id: "2ca503b8-24c7-4f12-a44d-ddc3ad76528d", name: "JEANS BLACK", image: "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/85/785059/7.jpg?9552",description: "Blacky Denim Jeans",quantity: "3,000",category: "Jeans", price: "4,500"}
+
         ]
 
         const mockedExecute = jest.fn().mockResolvedValue({ recordset: mockedResult });
@@ -79,10 +82,63 @@ describe('get all products', () => {
 
         await getAllProducts({} as any, res);
         
-        expect(res.json).toHaveBeenCalledWith({products:mockedResult});
+        expect(res.json).toHaveBeenCalledWith({message:mockedResult});
     });
 })
 
 
+
+
+
+// Test for getOneProduct
+describe('getOneProduct', () => {
+    let res: any;
+
+    beforeEach(() => {
+        res = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn().mockReturnThis()
+        };
+    });
+
+    it('Successfully got one product by product_id', async () => {
+       
+        const mockedResult = [
+            { 
+                product_id: '4756cf7d-ff5c-4b78-965d-864691cbe560',
+                name: "JEANS BLACK",
+                image: "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/85/785059/7.jpg?9552",
+                description: "Blacky Denim Jeans",
+                quantity: "3,000",
+                category: "Jeans",
+                price: "4,500"
+            }
+        ];
+
+        const mockedExecute = jest.fn().mockResolvedValue({ recordset: mockedResult });
+
+
+        const mockedPool = {
+            request: jest.fn().mockReturnThis(),
+            input: jest.fn().mockReturnThis(),
+            execute: mockedExecute
+        };
+
+        jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool as never);
+
+
+        const req = {
+            params: {
+                id: '4756cf7d-ff5c-4b78-965d-864691cbe560' 
+            }
+        };
+
+       
+        await getOneProduct(req as any, res);
+
+     
+        expect(res.json).toHaveBeenCalledWith({ message: mockedResult });
+    });
+});
 
 

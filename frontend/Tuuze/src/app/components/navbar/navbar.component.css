@@ -43,3 +43,14 @@
 .hambuger:hover{
   color: #b819b0;
 }
+
+/* added cart count */
+.count {
+  font-size: 30px; 
+  font-weight: bold;
+  position: relative;
+  right:45px;
+  color: black;
+  top: -10px;
+  transform: translate(50%, -50%);
+}

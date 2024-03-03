@@ -1,3 +1,4 @@
+
 import bcrypt from 'bcrypt'
 import mssql from 'mssql'
 import { RegisterUser } from '../../userController'
@@ -5,7 +6,6 @@ import { RegisterUser } from '../../userController'
 describe("User Registration", ()=>{
 
     let res: any
-
     beforeEach(()=>{
         res = {
             status: jest.fn().mockReturnThis(),
@@ -20,12 +20,10 @@ describe("User Registration", ()=>{
                 lastName: "Maina",
                 email: "dogegodwin@gmail.com",
                 password: "atopwudan"
-              }
+            }
         }
-
-
+        jest.spyOn(bcrypt, 'hash').mockResolvedValueOnce("H23Pwdkjy" as never)
         const mockedInput = jest.fn().mockReturnThis() //makes it chainable
-
         const mockedExecute = jest.fn().mockResolvedValue({rowsAffected: [1]})
 
         const mockedRequest = {
@@ -38,15 +36,13 @@ describe("User Registration", ()=>{
         }
 
         jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool as never)
-
         await RegisterUser(req as any, res)
 
-        expect(res.json).toHaveBeenCalledWith({message:"Account created successfully"})
-    
+        expect(res.json).toHaveBeenCalledWith({message: "Account created successfully"})
+        
     })
+
 })
-
-
 
 
 

@@ -9,6 +9,8 @@ import { AdminViewUsersComponent } from './components/admin-view-users/admin-vie
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { ProductModalComponent } from './components/product-modal/product-modal.component';
+import { CartComponent } from './components/cart/cart.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -20,5 +22,7 @@ export const routes: Routes = [
   { path: 'settings', component: ChangePasswordComponent },
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'users', component: UserDashboardComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'product/:product_id', component: ProductModalComponent },
   { path: '**', component: NotFoundComponent },
 ];

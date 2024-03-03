@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+
+<div>
+
+  <h1>Cart</h1>
+
+  <!-- Display the count of items in cart -->
+  <p>Number of items in cart: {{ cartProducts.length }}</p>
+
+  <div *ngFor="let product of cartProducts">
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); justify-content: center; align-items: center; border: 2px solid black; width: 800px; margin-bottom: 40px; margin-left: 30px; margin-top: 70px;">
+      <div>
+        <img style="width: 30%; border-radius: 30px; margin: 30px;" src="{{ product.image }}" alt="" srcset="">
+        <button>Remove item</button>
+      </div>
+      <div>
+        <p>{{ product.description }}</p><br>
+        <!-- <p>{{ product.category }}</p><br>  -->
+        <p>{{ product.quantity }}</p><br>
+        <b>{{ product.price }}</b><br>
+        
+        <!-- Styling for buttons -->
+        <div style="display: flex; align-items: center;">
+          <button style="margin-right: 10px; padding: 5px 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px;">-</button>
+          <span style="margin-right: 10px;">1</span> <!-- Change this value dynamically based on the quantity -->
+          <button style="padding: 5px 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px;">+</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

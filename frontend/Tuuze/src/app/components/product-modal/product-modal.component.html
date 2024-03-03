@@ -1,17 +1,8 @@
 
-<p>user-dashboard-works</p>
 
+  <div  *ngFor="let product of productData;  let i = index">
 
-<button >get all product</button>
-<button>view one product by Id</button>
-<button routerLink="/settings">settings</button>
-<br><br>
-
-<app-navbar></app-navbar>
-<div style="margin-inline:30px;display:grid; grid-template-columns: repeat(3,1fr); margin-top:100px;" >
-  <div  *ngFor="let product of myproducts;  let i = index">
-
-    <div style="margin-top:50px; height: 100%;" (click)="viewProductModal(product.product_id)">
+    <div style="margin-top:50px; height: 100%;" >
       <h4 style="display: inline-block;">name:</h4> <p style="display: inline-block;">{{product.name}}</p><br>
       <div>
         <div style="display: flex; align-items: center;">
@@ -22,7 +13,8 @@
       <!-- <h4 style="display: inline-block;">category:</h4> <p style="display: inline-block;">{{product.category}}</p><br> -->
       <h4 style="display: inline-block;">in Stock:</h4> <p style="display: inline-block;">{{product.quantity}}</p><br>
       <h4 style="display: inline-block;">price:</h4> <p style="display: inline-block;">{{product.price}}</p><br>
+      <button type="submit">Add To Cart</button>
     </div>
+
 </div>
-<button type="submit" (click)="addToCart(product)">Add To Cart</button>
-</div>
+
