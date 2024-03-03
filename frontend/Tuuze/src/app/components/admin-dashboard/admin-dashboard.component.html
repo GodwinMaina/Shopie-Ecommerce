@@ -1,0 +1,31 @@
+<p>admin-dashboard works!</p>
+
+
+<button routerLink="/admin/create-products">create-products</button>
+<button >get all product</button>
+<button >Delete</button>
+<button routerLink="/admin/view-users">view users</button>
+<button >view one product</button>
+<button routerLink="/settings">settings</button>
+
+<div style="margin-inline:30px;display:grid; grid-template-columns: repeat(3,1fr);">
+  <div  *ngFor="let product of myproducts;  let i = index">
+
+    <div style="margin-top:50px; height: 100%;">
+      <h4 style="display: inline-block;">name:</h4> <p style="display: inline-block;">{{product.name}}</p><br>
+      <div>
+        <div style="display: flex; align-items: center;">
+          <h4 style="margin-right: 10px;">image:</h4>
+          <img style="width: 40px;" src="{{product.image}}" alt="" srcset="">
+        </div><br>
+      <h4 style="display: inline-block;">description:</h4> <p style="display: inline-block;">{{product.description}}</p><br>
+      <h4 style="display: inline-block;">category:</h4> <p style="display: inline-block;">{{product.category}}</p><br>
+      <h4 style="display: inline-block;">quantity:</h4> <p style="display: inline-block;">{{product.quantity}}</p><br>
+      <h4 style="display: inline-block;">price:</h4> <p style="display: inline-block;">{{product.price}}</p><br>
+      <button [routerLink]="['/admin/update-products', product.product_id]" style="margin-top: 10px; margin-right: 10px; padding: 5px 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;" (click)="updateProduct(product.product_id)">Edit</button>
+      <button style="margin-top: 10px; padding: 5px 10px; background-color: #dc3545; color: #fff; border: none; border-radius: 5px; cursor: pointer;" (click)="deleteProduct(product.product_id)">Delete</button>
+
+    </div>
+
+</div>
+</div>

@@ -1,0 +1,58 @@
+
+###Register User
+POST http://localhost:4000/users/register
+Content-Type: application/json
+
+{
+  "firstName": "Godwin",
+  "lastName": "Maina",
+  "email": "dogegodwin@gmail.com",
+  "password": "atopwudan"
+}
+
+###login User
+POST http://localhost:4000/users/auth/login
+Content-Type: application/json
+
+{
+  "email": "compgodwin@gmail.com",
+  "password": "atopwudan"
+}
+
+###Get All users
+GET http://localhost:4000/users
+Content-Type: application/json
+
+
+###Get one users by id
+GET http://localhost:4000/users/b357e2f7-3a1c-4437-82db-0860e2e9388a
+Content-Type: application/json
+
+
+###update User by id
+PUT http://localhost:4000/users/update/b357e2f7-3a1c-4437-82db-0860e2e9388a
+Content-Type: application/json
+
+{
+  "firstName": "Godwiny",
+  "lastName": "Mynner",
+  "email": "goddymyner@gmail.com",
+  "password": "atopwudan1234"
+}
+
+
+###delete User by id
+DELETE  http://localhost:4000/users/delete/b357e2f7-3a1c-4437-82db-0860e2e9388a
+Content-Type: application/json
+
+
+###reset password
+PUT http://localhost:4000/users/resetPassword
+Content-Type: application/json
+
+{
+    "email": "compgodwin@gmail.com",
+    "password": "1234678"
+}
+
+

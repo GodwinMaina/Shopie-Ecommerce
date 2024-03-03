@@ -1,0 +1,33 @@
+.main{
+  min-height: 30vh;
+  max-height: max-content;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: #290A5C;
+  color: white;
+  font-size: 12px;
+}
+.links{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom:5vh ;
+}
+.quick-links li{
+  cursor: pointer;
+}
+.quick-links li:hover{
+  color: #b819b0;
+}
+.copyrights{
+  display: flex;
+  justify-content: center;
+}
+.fa-brands{
+  width: 2vw;
+  cursor: pointer;
+}
+.fa-brands:hover{
+  color: #b819b0;
+}

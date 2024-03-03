@@ -1,0 +1,57 @@
+.main {
+  min-height: 80vh;
+  max-height: max-content;
+  width: 100vw;
+  background-color: #f3ebff;
+  display: flex;
+  justify-content: center;
+}
+.login-div{
+  height: 50%;
+  width: 35%;
+  margin-top: 12vh;
+  
+}
+.form{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.email-input,.password{
+    width: 100%;
+    border: none;
+    box-shadow: 2px 2px 1px gray;
+    padding-left: 2%;
+    border-radius: 5px;
+}
+.login-btn{
+    background-color: #BE97FE;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    box-shadow: 2px 2px 1px gray;
+    border-radius: 5px;
+}
+.login-btn:hover{
+    background-color: #290A5C;
+    color: white;
+}
+.forgot-btn{
+    display: flex;
+    justify-content: end;
+}
+.forgot-href{
+    cursor: pointer;
+    text-decoration: none;
+}
+.forgot-href:hover{
+    color: #b819b0;
+}
+
+@media (max-width:768px) {
+    .login-div{
+        width:70%;
+    }
+}

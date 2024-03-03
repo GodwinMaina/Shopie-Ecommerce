@@ -1,0 +1,6 @@
+
+CREATE OR ALTER PROCEDURE getAllProducts
+AS
+BEGIN
+    SELECT * FROM Products
+END

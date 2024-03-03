@@ -1,0 +1,45 @@
+.main{
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  height: 12vh;
+  background-color: #F3EBFF;
+}
+.navbar{
+  height: 100%;
+  width:100%;
+}
+.nav-items{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+.logo>h1{
+  cursor: pointer;
+}
+.menu{
+  width: 50%;
+}
+.menu>ul{
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.menu li{
+  cursor: pointer;
+}
+.menu li:hover{
+  color: #b819b0;
+}
+.hambuger{
+  display:none;
+  cursor: pointer;
+}
+.hambuger:hover{
+  color: #b819b0;
+}

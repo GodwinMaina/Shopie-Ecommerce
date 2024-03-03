@@ -1,0 +1,18 @@
+.main{
+  height: 90vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+img{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+.content{
+  position: relative;
+  color: #290A5C;
+}

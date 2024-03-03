@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<div class="main">
+    <div class="login-div">
+      <form class="form" [formGroup]="updateForm" (ngSubmit)="updateProduct(product_id)">
+        <!-- <input type="hidden" formControlName="product_id"> -->
+
+        <div class="login-title">
+            <h1>Update Product</h1>
+
+        </div>
+        <div class="email">
+            <label for="">Name of the product</label><br>
+            <input type="text" class="email-input" name="name" formControlName="name">
+        </div>
+
+        <div class="email">
+          <label for="">Image of the product</label><br>
+          <input type="text"   name="image" formControlName="image" class="email-input">
+      </div>
+
+        <div class="email">
+            <label for="">Description of the product</label><br>
+            <textarea name="description" formControlName="description" id="" cols="30" rows="10" class="password"></textarea>
+        </div>
+
+        <div class="email">
+          <label for="">Quantity</label><br>
+          <input name="quantity" formControlName="quantity" id="" cols="30" rows="10" class="password">
+      </div>
+
+
+        <div class="email">
+            <label for="">Price of product</label><br>
+            <input type="text" class="password" name="price" formControlName="price">
+        </div>
+        <div class="email">
+            <label for="">Category of product</label><br>
+            <select name="" id="" class="password" name="category" formControlName="category">
+                <option value="">Categories</option>
+                <option value="Top">Top</option>
+                <option value="Jeans">Jeans</option>
+                <option value="Dress">Dress</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Skirts">Skirts</option>
+            </select>
+        </div>
+        <div class="email">
+            <button type="submit" class="login-btn">Update Product</button>
+        </div>
+    </form>
+    </div>
+</div>
+<app-footer></app-footer>

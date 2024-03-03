@@ -1,0 +1,22 @@
+.main{
+  width: 100vw;
+  min-height: 80vh;
+  max-height: max-content;
+  display: flex;
+  justify-content: center;
+}
+.table-div{
+  margin-top: 15vh;
+  width: 90%;
+}
+.table{
+  width: 100%;
+}
+.table th{
+  border: 1px solid white;
+  background-color: #290A5C;
+  color: white;
+}
+.table td{
+  border: 1px solid black;
+}
