@@ -1,32 +1,210 @@
-<p>admin-dashboard works!</p>
+<!-- <p>admin-dashboard works!</p> -->
 
 
-<button routerLink="/admin/create-products">create-products</button>
-<button >get all product</button>
-<button >Delete</button>
-<button >Edit product</button>
-<button routerLink="/admin/view-users">view users</button>
-<button >view one product</button>
-<button routerLink="/settings">settings</button>
+<!-- <button routerLink="/admin/create-products">create-products</button> -->
+<!-- <button >get all product</button> -->
+<!-- <button >Delete</button> -->
+<!-- <button >Edit product</button> -->
+<!-- <button routerLink="/admin/view-users">view users</button> -->
+<!-- <button >view one product</button> -->
+<!-- <button routerLink="/settings">settings</button> -->
 
-<div style="margin-inline:30px;display:grid; grid-template-columns: repeat(3,1fr);">
-  <div  *ngFor="let product of myproducts;  let i = index">
+<!-- <div style="margin-inline:30px;display:grid; grid-template-columns: repeat(3,1fr);"> -->
+  <!-- <div  *ngFor="let product of myproducts;  let i = index"> -->
 
-    <div style="margin-top:50px; height: 100%;">
-      <h4 style="display: inline-block;">name:</h4> <p style="display: inline-block;">{{product.name}}</p><br>
-      <div>
-        <div style="display: flex; align-items: center;">
-          <h4 style="margin-right: 10px;">image:</h4>
-          <img style="width: 40px;" src="{{product.image}}" alt="" srcset="">
-        </div><br>
-      <h4 style="display: inline-block;">description:</h4> <p style="display: inline-block;">{{product.description}}</p><br>
-      <h4 style="display: inline-block;">category:</h4> <p style="display: inline-block;">{{product.category}}</p><br>
-      <h4 style="display: inline-block;">quantity:</h4> <p style="display: inline-block;">{{product.quantity}}</p><br>
-      <h4 style="display: inline-block;">price:</h4> <p style="display: inline-block;">{{product.price}}</p><br>
-      <button [routerLink]="['/admin/update-products', product.product_id]" style="margin-top: 10px; margin-right: 10px; padding: 5px 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;" (click)="updateProduct(product.product_id)">Edit</button>
-      <button style="margin-top: 10px; padding: 5px 10px; background-color: #dc3545; color: #fff; border: none; border-radius: 5px; cursor: pointer;" (click)="deleteProduct(product.product_id)">Delete</button>
+    <!-- <div style="margin-top:50px; height: 100%;"> -->
+      <!-- <h4 style="display: inline-block;">name:</h4> <p style="display: inline-block;">{{product.name}}</p><br> -->
+      <!-- <div> -->
+        <!-- <div style="display: flex; align-items: center;"> -->
+          <!-- <h4 style="margin-right: 10px;">image:</h4> -->
+          <!-- <img style="width: 40px;" src="{{product.image}}" alt="" srcset=""> -->
+        <!-- </div><br> -->
+      <!-- <h4 style="display: inline-block;">description:</h4> <p style="display: inline-block;">{{product.description}}</p><br> -->
+      <!-- <h4 style="display: inline-block;">category:</h4> <p style="display: inline-block;">{{product.category}}</p><br> -->
+      <!-- <h4 style="display: inline-block;">quantity:</h4> <p style="display: inline-block;">{{product.quantity}}</p><br> -->
+      <!-- <h4 style="display: inline-block;">price:</h4> <p style="display: inline-block;">{{product.price}}</p><br> -->
+      <!-- <button [routerLink]="['/admin/update-products', product.product_id]" style="margin-top: 10px; margin-right: 10px; padding: 5px 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;" (click)="updateProduct(product.product_id)">Edit</button> -->
+      <!-- <button style="margin-top: 10px; padding: 5px 10px; background-color: #dc3545; color: #fff; border: none; border-radius: 5px; cursor: pointer;" (click)="deleteProduct(product.product_id)">Delete</button> -->
 
+    <!-- </div> -->
+
+<!-- </div> -->
+<!-- </div> -->
+
+
+
+
+
+
+<app-navbar></app-navbar>
+
+<div class="main">
+  
+    <div class="landing">
+        <img src="../../../assets/Landing Page.jpg" alt="" class="landing-img">
+        <div class="landing-txt">
+            <h1>
+                Welcome Admin.<br>
+                It's been a minute.
+            </h1>
+            <button class="collection-btn">VIEW COLLECTION</button>
+        </div>
     </div>
 
+    
+    <div class="products-div">
+        <div class="prod-title">
+            <h1>Our Products</h1>
+        </div>
+
+        
+        <div class="products">
+            <div class="prod" *ngFor="let product of myproducts;  let i = index">
+                <div class="img-prod">
+                    <img src="{{product.image}}" alt="" class="prod-img">
+                    <div class="prod-text">
+                        <div class="edit-btn">
+                            <button class="edit" (click)="updateProduct(product.product_id)" [routerLink]="['/admin/update-products', product.product_id]" >Edit</button>
+                        </div>
+                        <div class="delete-btn">
+                            <button class="delete" (click)="deleteProduct(product.product_id)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="prod-desc">
+                  <p>{{product.name}}</p>
+                  <p>{{product.description}}</p>
+                  <p> <b> At only Ksh. {{product.price}}</b></p>
+                  <p>Remaining stock: {{product.quantity}}</p>
+                </div>
+            </div>
+
+
+            <!-- <div class="prod" (click)="showProduct()"> -->
+                <!-- <div class="img-prod"> -->
+                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
+                    <!-- <div class="prod-text"> -->
+                        <!-- <div class="edit-btn"> -->
+                            <!-- <button class="edit">Edit</button> -->
+                        <!-- </div> -->
+                        <!-- <div class="delete-btn"> -->
+                            <!-- <button class="delete">Delete</button> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+                
+                <!-- <div class="prod-desc"> -->
+                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
+                <!-- </div> -->
+            <!-- </div> -->
+
+
+            <!-- <div class="prod" (click)="showProduct()"> -->
+                <!-- <div class="img-prod"> -->
+                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
+                    <!-- <div class="prod-text"> -->
+                        <!-- <div class="edit-btn"> -->
+                            <!-- <button class="edit">Edit</button> -->
+                        <!-- </div> -->
+                        <!-- <div class="delete-btn"> -->
+                            <!-- <button class="delete">Delete</button> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+                
+                <!-- <div class="prod-desc"> -->
+                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
+                <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="prod" (click)="showProduct()"> -->
+                <!-- <div class="img-prod"> -->
+                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
+                    <!-- <div class="prod-text"> -->
+                        <!-- <div class="edit-btn"> -->
+                            <!-- <button class="edit">Edit</button> -->
+                        <!-- </div> -->
+                        <!-- <div class="delete-btn"> -->
+                            <!-- <button class="delete">Delete</button> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+                
+                <!-- <div class="prod-desc"> -->
+                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
+                <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="prod" (click)="showProduct()"> -->
+                <!-- <div class="img-prod"> -->
+                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
+                    <!-- <div class="prod-text"> -->
+                        <!-- <div class="edit-btn"> -->
+                            <!-- <button class="edit">Edit</button> -->
+                        <!-- </div> -->
+                        <!-- <div class="delete-btn"> -->
+                            <!-- <button class="delete">Delete</button> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+                
+                <!-- <div class="prod-desc"> -->
+                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
+                <!-- </div> -->
+            <!-- </div> -->
+
+            <!-- <div class="prod" (click)="showProduct()"> -->
+                <!-- <div class="img-prod"> -->
+                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
+                    <!-- <div class="prod-text"> -->
+                        <!-- <div class="edit-btn"> -->
+                            <!-- <button class="edit">Edit</button> -->
+                        <!-- </div> -->
+                        <!-- <div class="delete-btn"> -->
+                            <!-- <button class="delete">Delete</button> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+                
+                <!-- <div class="prod-desc"> -->
+                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
+                <!-- </div> -->
+            <!-- </div> -->
+
+
+            <div class="prod-modal-bg">
+                <div class="prod-modal">
+                    <div class="modal-img">
+                        <img src="../../../assets/carousel 4.jpg" alt="" class="img-modal">
+                    </div>
+                    <div class="modal-text">
+                        <div class="close-icon" (click)="closeModal()">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+                        <div class="mod-cont">
+                            <div class="modal-desc">
+                                <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
+                            </div>
+                            <div class="modal-plus">
+                                <i class="fa-solid fa-minus"></i>
+                                <p>2</p>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div class="modal-add-cart">
+                                <button class="cart-btn">ADD TO CART</button>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+            </div>
+         </div> <!-- product div -->
+
+
+
+
+    </div>
+    
 </div>
-</div>
+
+<app-footer></app-footer>

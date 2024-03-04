@@ -30,5 +30,9 @@ export class ProductModalComponent {
     }
 
   )}
- ) }
+  
+ ) 
+
+}
+
 }

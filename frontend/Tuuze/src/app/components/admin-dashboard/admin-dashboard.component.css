@@ -1,0 +1,261 @@
+.main {
+  min-height: 200vh;
+  max-height: max-content;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: #f3ebff;
+}
+.landing {
+  height: 90vh;
+  width: 100%;
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.landing-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  filter: brightness(60%);
+}
+.landing-txt {
+  position: relative;
+  margin-right: -40%;
+  margin-bottom: -20%;
+  color: white;
+}
+.collection-btn {
+  background-color: #be97fe;
+  color: white;
+  border: none;
+  box-shadow: 2px 2px 1px gray;
+  width: 80%;
+  height: 6vh;
+  cursor: pointer;
+}
+.collection-btn:hover {
+  background-color: #290a5c;
+}
+.products-div {
+  width: 100%;
+  min-height: 70vh;
+  max-height: max-content;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+.prod-title {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.products {
+  width: 100%;
+  min-height: 70vh;
+  max-height: max-content;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.prod {
+  min-height: 50vh;
+  max-height: max-content;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin-left: 2vw;
+  margin-bottom: 4vh;
+  padding-bottom: 5vh;
+}
+.img-prod {
+  width: 100%;
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.prod-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+.prod-text {
+  width: 95%;
+  height: 15%;
+  position: relative;
+  margin-bottom: -50%;
+  text-align: center;
+  display: none;
+  justify-content: space-around;
+}
+.prod:hover {
+  box-shadow: 4px 4px 2px gray;
+}
+.img-prod:hover > .prod-text {
+  display: flex;
+}
+.edit-btn,.delete-btn{
+  width: 45%;
+  height: 100%;
+}
+.edit,.delete{
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border: none;
+}
+.edit{
+  background-color: rgb(133, 8, 8);
+  color: white;
+}
+.edit:hover{
+  background-color: red;
+}
+.delete{
+  background-color: green;
+  color: white;
+}
+.delete:hover{
+  background-color: lime;
+}
+.prod-desc {
+  width: 100%;
+  min-height: 25%;
+  max-height: max-content;
+}
+.prod-desc>p{
+  margin-left: 1vw;
+}
+.prod-modal-bg {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  display: none;
+}
+.modal-active {
+  display: flex;
+}
+.modal-close {
+  display: none;
+}
+.prod-modal {
+  height: 60%;
+  width: 60%;
+  display: flex;
+  background-color: #f3ebff;
+}
+.modal-img {
+  width: 50%;
+  height: 100%;
+}
+.img-modal {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.modal-text {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.close-icon {
+  display: flex;
+  justify-content: right;
+  align-items: start;
+  width: 100%;
+}
+.close-icon > i {
+  color: rgb(133, 8, 8);
+  cursor: pointer;
+}
+.close-icon > i:hover {
+  color: red;
+}
+.mod-cont {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.modal-plus {
+  width: 90%;
+  height: 10%;
+  background-color: #be97fe;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.modal-plus>i:hover{
+    color:  #b819b0;
+    cursor: pointer;
+}
+.modal-plus>p{
+    font-size: 20px;
+}
+.modal-add-cart {
+  width: 90%;
+  height: 10%;
+}
+.cart-btn {
+  width: 100%;
+  height: 100%;
+  background-color: #be97fe;
+  cursor: pointer;
+  border: none;
+}
+.cart-btn:hover {
+  background-color: #290a5c;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .landing-txt > h1 {
+    font-size: 16px;
+  }
+  .landing-txt {
+    margin-right: 0%;
+    margin-bottom: 0%;
+  }
+  .prod {
+    width: 30vw;
+  }
+  .prod-text {
+    margin-bottom: -100%;
+  }
+  .prod-modal{
+    height: 70%;
+    width: 80%;
+  }
+}
+@media (max-width: 425px) {
+  .prod {
+    width: 40vw;
+  }
+  .prod-modal{
+    height: 60%;
+    width: 90%;
+  }
+}

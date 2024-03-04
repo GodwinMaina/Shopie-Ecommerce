@@ -4,12 +4,14 @@ import { AuthServiceService } from '../../services/auth-service.service';
 import { CommonModule } from '@angular/common';
 import { allProductsGet } from '../../interfaces/createProducts';
 import { response } from 'express';
+import { FooterComponent } from '../footer/footer.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [ CommonModule,RouterLink],
+  imports: [ CommonModule,RouterLink,FooterComponent, NavbarComponent],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.css'
 })
@@ -45,4 +47,21 @@ export class AdminDashboardComponent {
   updateProduct(product_id: string): void {
       this.router.navigate(['/admin/update-products', product_id]);
   }
+
+
+
+
+  showProduct() {
+    let modalBg = document.querySelector('.prod-modal-bg') as HTMLDivElement;
+
+    modalBg?.classList.add('modal-active');
+  }
+  closeModal() {
+    let modalBg = document.querySelector('.prod-modal-bg') as HTMLDivElement;
+
+    modalBg?.classList.remove('modal-active');
+  }
+
+
+
 }

@@ -1,3 +1,19 @@
+<!-- <app-navbar></app-navbar> -->
+<!-- <div class="main"> -->
+    <!-- <div class="landing"> -->
+        <!-- <img src="../../../assets/Landing Page.jpg" alt="" class="landing-img"> -->
+        <!-- <div class="landing-txt"> -->
+            <!-- <h1> -->
+                <!-- Welcome to Tuuze Shop.<br> -->
+                <!-- At Tuuze, We got you covered. -->
+            <!-- </h1> -->
+            <!-- <button class="collection-btn">VIEW COLLECTION</button> -->
+        <!-- </div> -->
+    <!-- </div> -->
+<!-- </div> -->
+
+<!-- <app-footer></app-footer> -->
+
 <app-navbar></app-navbar>
 <div class="main">
     <div class="landing">
@@ -9,6 +25,190 @@
             </h1>
             <button class="collection-btn">VIEW COLLECTION</button>
         </div>
+    </div>
+    <div class="carousel">
+        <div class="caro1">
+            <div class="img-carousel">
+                <img src="../../../assets/carousel 1.jpg" alt="" class="carousel-img">
+                <div class="carousel-text">
+                    <p>SUMMER COLLECTION</p>
+                </div>
+            </div>
+            <div class="img-carousel">
+                <img src="../../../assets/carousel 2.jpg" alt="" class="carousel-img">
+                <div class="carousel-text">
+                    <p>SPRING COLLECTION</p>
+                </div>
+            </div>
+            <div class="img-carousel">
+                <img src="../../../assets/carousel 3.jpg" alt="" class="carousel-img">
+                <div class="carousel-text">
+                    <p>AUTUMN COLLECTION</p>
+                </div>
+            </div>
+            <div class="img-carousel">
+                <img src="../../../assets/carousel 4.jpg" alt="" class="carousel-img">
+                <div class="carousel-text">
+                    <p>WINTER COLLECTION</p>
+                </div>
+            </div>
+        </div>
+        <div class="caro2">
+            <div class="img-carousel">
+                <img src="../../../assets/carousel 1.jpg" alt="" class="carousel-img">
+                <div class="carousel-text">
+                    <p>SUMMER COLLECTION</p>
+                </div>
+            </div>
+            <div class="img-carousel">
+                <img src="../../../assets/carousel 2.jpg" alt="" class="carousel-img">
+                <div class="carousel-text">
+                    <p>SPRING COLLECTION</p>
+                </div>
+            </div>
+            <div class="img-carousel">
+                <img src="../../../assets/carousel 3.jpg" alt="" class="carousel-img">
+                <div class="carousel-text">
+                    <p>AUTUMN COLLECTION</p>
+                </div>
+            </div>
+            <div class="img-carousel">
+                <img src="../../../assets/carousel 4.jpg" alt="" class="carousel-img">
+                <div class="carousel-text">
+                    <p>WINTER COLLECTION</p>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <div class="products-div">
+        <div class="prod-title">
+            <h1>Our Products</h1>
+        </div>
+        <div class="products">
+            <div class="prod" (click)="showProduct()">
+                <div class="img-prod">
+                    <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img">
+                    <div class="prod-text" routerLink="/login">
+                        <p>ADD TO CART</p>
+                    </div>
+                </div>
+                
+                <div class="prod-desc">
+                    <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
+                </div>
+            </div>
+            <div class="prod" (click)="showProduct()">
+                <div class="img-prod">
+                    <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img">
+                    <div class="prod-text" routerLink="/login">
+                        <p>ADD TO CART</p>
+                    </div>
+                </div>
+                
+                <div class="prod-desc">
+                    <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
+                </div>
+            </div>
+            <div class="prod" (click)="showProduct()">
+                <div class="img-prod">
+                    <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img">
+                    <div class="prod-text" routerLink="/login">
+                        <p>ADD TO CART</p>
+                    </div>
+                </div>
+                
+                <div class="prod-desc">
+                    <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
+                </div>
+            </div>
+            <div class="prod" (click)="showProduct()">
+                <div class="img-prod">
+                    <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img">
+                    <div class="prod-text" routerLink="/login">
+                        <p>ADD TO CART</p>
+                    </div>
+                </div>
+                
+                <div class="prod-desc">
+                    <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
+                </div>
+            </div>
+            <div class="prod" (click)="showProduct()">
+                <div class="img-prod">
+                    <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img">
+                    <div class="prod-text" routerLink="/login">
+                        <p>ADD TO CART</p>
+                    </div>
+                </div>
+                
+                <div class="prod-desc">
+                    <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
+                </div>
+            </div>
+            <div class="prod" (click)="showProduct()">
+                <div class="img-prod">
+                    <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img">
+                    <div class="prod-text" routerLink="/login">
+                        <p>ADD TO CART</p>
+                    </div>
+                </div>
+                
+                <div class="prod-desc">
+                    <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
+                </div>
+            </div>
+            <div class="prod-modal-bg">
+                <div class="prod-modal">
+                    <div class="modal-img">
+                        <img src="../../../assets/carousel 4.jpg" alt="" class="img-modal">
+                    </div>
+                    <div class="modal-text">
+                        <div class="close-icon" (click)="closeModal()">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+                        <div class="mod-cont">
+                            <div class="modal-desc">
+                                <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
+                            </div>
+                            <div class="modal-plus">
+                                <i class="fa-solid fa-minus"></i>
+                                <p>2</p>
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div class="modal-add-cart">
+                                <button class="cart-btn">ADD TO CART</button>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reviews-div">
+        <div class="rev-title">
+            <h1>What our Customers say about us</h1>
+        </div>
+        <div class="rev-cont">
+            <div class="revs">
+                <div class="before">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </div>
+                <div class="review">
+                    <img src="../../../assets/carousel 2.jpg" alt="" class="rev-image">
+                    <h2>Magdalene Grace</h2>
+                    <h3>Fashion Designer</h3>
+                    <p>Their designs are the best I have ever seen.</p>
+                </div>
+                <div class="next">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        
     </div>
 </div>
 
