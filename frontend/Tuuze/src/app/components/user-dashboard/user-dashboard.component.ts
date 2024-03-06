@@ -22,7 +22,7 @@ export class UserDashboardComponent {
   myproducts: any[] = [];
   productData: any[]=[];
 
- productQuantity=1;
+  productQuantity:number=1;
 
   product_id!: string;
   product:any[]=[];

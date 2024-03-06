@@ -5,6 +5,7 @@
             <div class="login-title">
                 <h1>Login</h1>
             </div>
+            <p style="font-size: 20px; color: red">{{userNotFound}}</p>
             <div class="email">
                 <label for="">Email</label><br>
                 <input type="email" placeholder="johndoe@gmail.com" class="email-input"  name="email" formControlName="email">
@@ -20,6 +21,7 @@
                 <label for="">Password</label><br>
                 <input type="password" placeholder="******" class="password" name="password"  formControlName="password">
             </div>
+            <!-- <p style="font-size: 20px; ;">{{pwdError}}</p> -->
             <div class="forgot-btn">
                 <a routerLink="/settings" class="forgot-href">Forgot Password</a>
             </div>

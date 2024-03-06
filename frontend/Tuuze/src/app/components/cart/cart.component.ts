@@ -18,8 +18,13 @@ export class CartComponent {
 
   cartProd: any[]=[];
   user_id!:string ;
+  email!: string;
 
-  constructor(private cartImplement :CartService, private api:AuthServiceService, private user:UserIDService){}
+  constructor(private cartImplement :CartService, private api:AuthServiceService, private user:UserIDService){
+
+
+    this.fetchUserCartProducts()
+  }
 
   remove(product_id:string){
     this.cartImplement.removeFromCart(product_id);
@@ -35,29 +40,24 @@ export class CartComponent {
 
 
 
-// Inside your component
-fetchUserCartProducts(user_id: string): void {
 
-this.user_id= this.user.getUserId() || '';
+  fetchUserCartProducts(): void {
+    this.user_id= this.user.getUserId() || '';
+    this.api.getUserCart(this.user_id).subscribe(response=>{
+      console.log(response);
 
-  this.api.getUserCart(user_id).subscribe({
-    next: (response) => {
-      if (response.error) {
-        console.error('Error fetching user cart products:', response.error);
-        // Handle error (e.g., display error message to the user)
-      } else {
-        this.cartProd = response.; // Assuming response has a 'cart' property containing cart products
-      }
-    },
-    error: (err) => {
-      console.error('Error fetching user cart products:', err);
-      // Handle error (e.g., display error message to the user)
-    }
-  });
+      this.cartProd= response.message
+
+      this.email=this.user.getEmail() || '';
+
+    })
+
+    console.log('cartpage');
+
+
 }
 
-
-
+// Inside your component
 
 
  }

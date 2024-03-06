@@ -27,7 +27,7 @@ export const createCart = async (req: Request, res: Response) => {
                 .input("description", mssql.NVarChar, description)
                 .input("price", mssql.VarChar, price)
                 .input("category", mssql.VarChar, category)
-                .input("quantity", mssql.VarChar, quantity)
+                .input("quantity", mssql.Int, quantity)
                 .input("image", mssql.NVarChar, image)
                 .execute('createCart');
 
@@ -63,11 +63,13 @@ export const getAllUsersCarts =  async(req: Request, res:Response)=>{
 export const getUserCart = async(req: Request, res:Response)=>{
     try {
         const user_id = req.params.user_id
+        
         console.log('Fetching cart for userId:', user_id);
-
+        console.log(user_id);
+        
         const pool = await mssql.connect(sqlConfig)
 
-        let message = (await pool.request().input("user_id", user_id).execute('getUserCart')).rowsAffected[0]
+        const message = (await pool.request().input("user_id", user_id).execute('getUserCart')).recordset
 
         console.log('Fetched cart:', message);
 
@@ -206,3 +208,61 @@ export const deleteCart = async(req: Request, res: Response)=>{
 //     }
     
 // };
+
+
+
+export const createCarty = async (req: Request, res: Response) => {
+    try {
+        const { user_id, products }: cart = req.body;     
+
+        let validationResult = createCartSchema.validate(req.body);
+        let error: any = validationResult.error;
+
+        if (error) {
+            return res.json({
+                error: error.details[0].message
+            });
+        }
+
+        const pool = await mssql.connect(sqlConfig);
+
+        const existingCart: { id: string, products: string }[] = await (await pool.request()
+            .input("user_id", mssql.VarChar, user_id)
+            .execute('CARTADD')).recordset;
+            
+        if (existingCart.length > 0) {
+            const id: string = existingCart[0].id;
+
+            const updatedProducts = JSON.parse(existingCart[0].products);
+            updatedProducts.push(...products);
+
+            let updateResult = await (await pool.request()
+                .input("cart_id", mssql.VarChar, id)
+                .input("user_id", mssql.VarChar,user_id)
+                .input("products", mssql.NVarChar, JSON.stringify(updatedProducts))
+                .execute('updateCart'));
+
+            if (updateResult.rowsAffected && updateResult.rowsAffected[0] > 0) {
+                return res.status(200).json({ success: true, message: 'Product added to existing cart successfully' });
+            } else {
+                return res.status(500).json({ error: 'Failed to update existing cart' });
+            }
+        } else {
+            const id = v4();
+            let result = await (await pool.request()
+                .input("cart_id", mssql.VarChar, id)
+                .input("user_id", mssql.VarChar, user_id)
+                .input("products", mssql.NVarChar, JSON.stringify(products))
+                .execute('createCart'));
+
+            if (result.rowsAffected && result.rowsAffected[0] > 0) {
+                return res.status(201).json({ success: true, message: 'New cart created successfully' });
+            } else {
+                return res.status(500).json({ error: 'Failed to create new cart' });
+            }
+        }
+    } catch (error) {
+        return res.status(500).json({error});
+    }
+};
+

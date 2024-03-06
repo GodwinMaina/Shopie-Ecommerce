@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { allUsers, oneUser, userRegister } from '../interfaces/userRegister';
 import { userLogin } from '../interfaces/userLogin';
-import {  allProductsGet, cartProduct, createProducts, oneProductsGet } from '../interfaces/createProducts';
+import {  allProductsGet, cartDisplay, cartProduct, createProducts, oneProductsGet } from '../interfaces/createProducts';
 import { Observable } from 'rxjs';
 
 
@@ -99,10 +99,10 @@ deleteProduct(product_id:string){
  //cart services
 
  getUserCart(user_id: string){
-  return this.http.get<{cart: any[], error: string}>(`http://localhost:4000/cart/${user_id}`,{
-    headers: new HttpHeaders({
-      'Content-type': 'application/json'
-    })
+  return this.http.get<cartDisplay>(`http://localhost:4000/cart/${user_id}`,{
+    // headers: new HttpHeaders({
+    //   'Content-type': 'application/json'
+    // })
   })
 }
 

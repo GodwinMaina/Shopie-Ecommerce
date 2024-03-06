@@ -21,6 +21,8 @@ import { UserIDService } from '../../services/user-id.service';
 export class LoginComponent {
 
   loginForm: FormGroup;
+  userNotFound!:string
+  pwdError!:string
 
   constructor(private fb:FormBuilder,private user:UserIDService,  public api:AuthServiceService, private router:Router){
 
@@ -38,25 +40,31 @@ export class LoginComponent {
 
         this.api.loginUser(
           this.loginForm.value.email,
-          this.loginForm.value.password
-        ).subscribe(
+          this.loginForm.value.password).subscribe(
           (response: any) => {
             console.log(response);
 
-            const user_id = response.user_id; // Extract user_id from the response
-            this.user.setUserId(user_id); // Save userId to UserService
+            if(response.error){
+              console.log(response);
+              this.userNotFound=response.error
 
+            }
+
+
+            else {
+             const user_id = response.user_id;
+            const email=response.email
+            this.user.setUserId(user_id);
+            this.user.setEMail(email)
             console.log('happy');
             console.log(user_id);
-
-
             const isAdmin = response.isAdmin;
-            const errors = response.error;
 
             if (isAdmin) {
               this.router.navigate(['/admin']);
-            } else {
+            } else if(!isAdmin) {
               this.router.navigate(['/users']);
+            }
             }
 
             this.loginForm.reset();
@@ -65,6 +73,8 @@ export class LoginComponent {
             console.error('Error:', error);
           }
         );
+
+
       } else {
         console.log('Form has errors');
       }

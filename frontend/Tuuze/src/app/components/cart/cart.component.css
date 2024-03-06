@@ -38,3 +38,34 @@
 /* span { */
   /* margin-right: 10px; */
 /* } */
+.cart-table {
+  margin-top: 20px;
+}
+
+table {
+  width: 70%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+img {
+  max-width: 100px;
+  max-height: 100px;
+}

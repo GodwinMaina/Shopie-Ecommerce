@@ -32,7 +32,7 @@ export interface cart {
     product_id: string;
     name: string;
     description: string;
-    price: number;
+    price: string;
     quantity: number;
     image: string;
   }

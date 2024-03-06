@@ -10,26 +10,29 @@
 
 export class UserIDService {
 
-  private user_id: string | null = null;
+  // private user_id: string | null = null;
 
-  public email:string | null = null;
+  private user_id_key = 'user_id';
+  private email_key = 'user_email';
+
+  // private email:string | null = null;
 
   constructor() {}
 
   setUserId(user_id: string): void {
-    this.user_id = user_id;
+    localStorage.setItem(this.user_id_key, user_id);
   }
 
   getUserId(): string | null {
-    return this.user_id;
+    return localStorage.getItem(this.user_id_key);
   }
 
   setEMail(email: string): void {
-    this.email = email;
+    localStorage.setItem(this.email_key, email);
   }
 
-  getEMail(): string | null {
-    return this.email;
+  getEmail(): string | null {
+    return localStorage.getItem(this.email_key);
   }
 
 }
