@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   updateCartItemCount(): void {
     const cartItems = this.cartService.getItems();
-    this.cartItemCount = cartItems.length;
+   // this.cartItemCount = cartItems.length;
   }
 
   ngOnDestroy(): void {

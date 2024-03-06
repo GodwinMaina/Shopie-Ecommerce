@@ -23,7 +23,7 @@
                 Welcome to Tuuze Shop.<br>
                 At Tuuze, We got you covered.
             </h1>
-            <button class="collection-btn">VIEW COLLECTION</button>
+            <button (click)="scrollToDiv()" class="collection-btn">VIEW COLLECTION</button>
         </div>
     </div>
     <div class="carousel">
@@ -34,12 +34,14 @@
                     <p>SUMMER COLLECTION</p>
                 </div>
             </div>
+
             <div class="img-carousel">
                 <img src="../../../assets/carousel 2.jpg" alt="" class="carousel-img">
                 <div class="carousel-text">
                     <p>SPRING COLLECTION</p>
                 </div>
             </div>
+
             <div class="img-carousel">
                 <img src="../../../assets/carousel 3.jpg" alt="" class="carousel-img">
                 <div class="carousel-text">
@@ -78,113 +80,137 @@
                     <p>WINTER COLLECTION</p>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
+
+
+
     <div class="products-div">
+
         <div class="prod-title">
             <h1>Our Products</h1>
         </div>
+
         <div class="products">
-            <div class="prod" (click)="showProduct()">
-                <div class="img-prod">
-                    <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img">
-                    <div class="prod-text" routerLink="/login">
-                        <p>ADD TO CART</p>
-                    </div>
-                </div>
-                
-                <div class="prod-desc">
-                    <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
-                </div>
+
+          <div class="prod" (click)="showProduct()" (click)="viewprod(product.product_id)" *ngFor="let product of myproducts;  let i = index">
+            <div class="img-prod">
+                <img src="{{product.image}}" alt="" class="prod-img">
+                <button (click)="toLogin()" class="prod-text">
+                  <P type="submit" >Add To Cart</P>
+                  <!-- <P type="submit" (click)="addToCart(product)">Add To Cart</P> -->
+                </button>
             </div>
-            <div class="prod" (click)="showProduct()">
-                <div class="img-prod">
-                    <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img">
-                    <div class="prod-text" routerLink="/login">
-                        <p>ADD TO CART</p>
-                    </div>
-                </div>
-                
-                <div class="prod-desc">
-                    <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
-                </div>
+            <div class="prod-desc">
+              <p>{{product.name}}</p>
+              <p>{{product.description}}</p>
+              <p> <b> At only Ksh. {{product.price}}</b></p>
+              <p>In stock: {{product.quantity}}</p>
             </div>
-            <div class="prod" (click)="showProduct()">
-                <div class="img-prod">
-                    <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img">
-                    <div class="prod-text" routerLink="/login">
-                        <p>ADD TO CART</p>
-                    </div>
-                </div>
-                
-                <div class="prod-desc">
-                    <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
-                </div>
-            </div>
-            <div class="prod" (click)="showProduct()">
-                <div class="img-prod">
-                    <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img">
-                    <div class="prod-text" routerLink="/login">
-                        <p>ADD TO CART</p>
-                    </div>
-                </div>
-                
-                <div class="prod-desc">
-                    <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
-                </div>
-            </div>
-            <div class="prod" (click)="showProduct()">
-                <div class="img-prod">
-                    <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img">
-                    <div class="prod-text" routerLink="/login">
-                        <p>ADD TO CART</p>
-                    </div>
-                </div>
-                
-                <div class="prod-desc">
-                    <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
-                </div>
-            </div>
-            <div class="prod" (click)="showProduct()">
-                <div class="img-prod">
-                    <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img">
-                    <div class="prod-text" routerLink="/login">
-                        <p>ADD TO CART</p>
-                    </div>
-                </div>
-                
-                <div class="prod-desc">
-                    <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
-                </div>
-            </div>
-            <div class="prod-modal-bg">
-                <div class="prod-modal">
+        </div>
+
+            <!-- <div class="prod" (click)="showProduct()"> -->
+                <!-- <div class="img-prod"> -->
+                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
+                    <!-- <div class="prod-text" routerLink="/login"> -->
+                        <!-- <p>ADD TO CART</p> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+
+                <!-- <div class="prod-desc"> -->
+                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
+                <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="prod" (click)="showProduct()"> -->
+                <!-- <div class="img-prod"> -->
+                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
+                    <!-- <div class="prod-text" routerLink="/login"> -->
+                        <!-- <p>ADD TO CART</p> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+
+                <!-- <div class="prod-desc"> -->
+                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
+                <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="prod" (click)="showProduct()"> -->
+                <!-- <div class="img-prod"> -->
+                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
+                    <!-- <div class="prod-text" routerLink="/login"> -->
+                        <!-- <p>ADD TO CART</p> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+
+                <!-- <div class="prod-desc"> -->
+                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
+                <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="prod" (click)="showProduct()"> -->
+                <!-- <div class="img-prod"> -->
+                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
+                    <!-- <div class="prod-text" routerLink="/login"> -->
+                        <!-- <p>ADD TO CART</p> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+
+                <!-- <div class="prod-desc"> -->
+                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
+                <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="prod" (click)="showProduct()"> -->
+                <!-- <div class="img-prod"> -->
+                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
+                    <!-- <div class="prod-text" routerLink="/login"> -->
+                        <!-- <p>ADD TO CART</p> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+
+                <!-- <div class="prod-desc"> -->
+                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
+                <!-- </div> -->
+            <!-- </div> -->
+
+
+
+
+
+              <div class="prod-modal-bg"  *ngFor="let product of selectedProduct;  let i = index">
+
+                <div class="prod-modal" (click)="showProduct()">
                     <div class="modal-img">
-                        <img src="../../../assets/carousel 4.jpg" alt="" class="img-modal">
+                        <img src="{{product.image}}" alt="" class="img-modal">
                     </div>
+
                     <div class="modal-text">
+
                         <div class="close-icon" (click)="closeModal()">
-                            <i class="fa-solid fa-circle-xmark"></i>
+                            <i class="fa-solid fa-circle-xmark" ></i>
                         </div>
                         <div class="mod-cont">
                             <div class="modal-desc">
-                                <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
+                              <p>{{product.name}}</p>
+                              <p>{{product.description}}</p>
+                              <p> <b> At only Ksh. {{product.price}}</b></p>
+                              <p>In stock: {{product.quantity}}</p>
                             </div>
-                            <div class="modal-plus">
+                            <div class="modal-plus" (click)="toLogin()" >
                                 <i class="fa-solid fa-minus"></i>
-                                <p>2</p>
-                                <i class="fa-solid fa-plus"></i>
+                                <p>1</p>
+                                <i class="fa-solid fa-plus" ></i>
                             </div>
-                            <div class="modal-add-cart">
-                                <button class="cart-btn">ADD TO CART</button>
+                            <div class="modal-add-cart" (click)="toLogin()" >
+                                <button  class="cart-btn">ADD TO CART</button>
                             </div>
                         </div>
-                        
-                        
                     </div>
-
                 </div>
+
+
             </div>
+
+
+
+
         </div>
     </div>
     <div class="reviews-div">
@@ -207,8 +233,8 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
     </div>
 </div>
 

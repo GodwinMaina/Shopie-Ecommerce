@@ -206,6 +206,7 @@
 }
 .modal-active {
   display: flex;
+
 }
 .modal-close {
   display: none;

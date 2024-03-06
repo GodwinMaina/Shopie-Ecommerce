@@ -21,17 +21,24 @@ export class CartService {
     }
   }
 
-  addToCart(product: cartProduct) {
-    // Check if the product already exists in the cart
-    const existsInCart = this.CartItems.some(item => item.product_id === product.product_id);
-    if (!existsInCart) {
-      // If product does not exist in cart, add it
-      this.CartItems.push(product);
-      this.updateLocalStorage();
-    }
+ addToCart(product: cartProduct) {
+  // Check if the product already exists in the cart
+  const existingProductIndex = this.CartItems.findIndex(item => item.product_id === product.product_id);
+
+  if (existingProductIndex !== -1) {
+    // If the product exists, update its quantity
+    this.CartItems[existingProductIndex].quantity += product.quantity;
+  } else {
+    // If the product does not exist, add it to the cart
+    this.CartItems.push(product);
   }
 
+  // Update local storage after modifying cart items
+  this.updateLocalStorage();
+}
+
   getItems(): cartProduct[] {
+    this.updateLocalStorage();
     return this.CartItems;
   }
 

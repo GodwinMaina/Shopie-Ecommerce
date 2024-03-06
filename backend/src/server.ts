@@ -5,6 +5,7 @@ import cors from 'cors';
 
 import userRouter from './routes/userRoutes';
 import productRouter from './routes/productRoutes';
+import cartRouter from './routes/cartRoutes';
 
 
 const app = express()
@@ -19,6 +20,7 @@ app.use(json())
  
 app.use('/users',userRouter)
 app.use('/products', productRouter)
+app.use('/cart', cartRouter)
 
 app.use((error: Error, req: Request, res: Response, next: NextFunction)=>{
     res.json({
