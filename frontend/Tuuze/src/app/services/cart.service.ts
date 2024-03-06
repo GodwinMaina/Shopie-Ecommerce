@@ -3,10 +3,9 @@ import { cartProduct } from '../interfaces/createProducts';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-
   private cartKeyValue = 'cartItems';
   CartItems: cartProduct[] = [];
 
@@ -23,20 +22,31 @@ export class CartService {
 
   addToCart(product: cartProduct) {
     // Check if the product already exists in the cart
-    const existsInCart = this.CartItems.some(item => item.product_id === product.product_id);
-    if (!existsInCart) {
-      // If product does not exist in cart, add it
+    const existingProductIndex = this.CartItems.findIndex(
+      (item) => item.product_id === product.product_id
+    );
+
+    if (existingProductIndex !== -1) {
+      // If the product exists, update its quantity
+      this.CartItems[existingProductIndex].quantity += product.quantity;
+    } else {
+      // If the product does not exist, add it to the cart
       this.CartItems.push(product);
-      this.updateLocalStorage();
     }
+
+    // Update local storage after modifying cart items
+    this.updateLocalStorage();
   }
 
   getItems(): cartProduct[] {
+    this.updateLocalStorage();
     return this.CartItems;
   }
 
   removeFromCart(product_id: string) {
-    this.CartItems = this.CartItems.filter(item => item.product_id !== product_id);
+    this.CartItems = this.CartItems.filter(
+      (item) => item.product_id !== product_id
+    );
     this.updateLocalStorage();
   }
 
@@ -49,5 +59,4 @@ export class CartService {
     // Store cart items in local storage
     localStorage.setItem(this.cartKeyValue, JSON.stringify(this.CartItems));
   }
-
 }

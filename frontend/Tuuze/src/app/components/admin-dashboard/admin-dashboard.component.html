@@ -58,8 +58,8 @@
         </div>
 
         
-        <div class="products">
-            <div class="prod" *ngFor="let product of myproducts;  let i = index">
+         <div class="products">
+            <!--<div class="prod" *ngFor="let product of myproducts;  let i = index">
                 <div class="img-prod">
                     <img src="{{product.image}}" alt="" class="prod-img">
                     <div class="prod-text">
@@ -77,8 +77,44 @@
                   <p> <b> At only Ksh. {{product.price}}</b></p>
                   <p>Remaining stock: {{product.quantity}}</p>
                 </div>
-            </div>
+            </div> -->
 
+        <div class="table-div">
+        <table  class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  *ngFor="let product of myproducts;  let i = index">
+              <td>{{i+1}}</td>
+              <td><img src="{{product.image}}" alt="" class="img-table"></td>
+              <td>{{product.name}}</td>
+              <td>{{product.description}}</td>
+              <td>{{product.price}}</td>
+              <td>{{product.quantity}}</td>
+              <td><div class="icon">
+                <div class="edit-icon" (click)="updateProduct(product.product_id)" [routerLink]="['/admin/update-products', product.product_id]">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </div>
+                <div class="delete-icon" (click)="deleteProduct(product.product_id)">
+                    <i class="fa-solid fa-trash"></i>
+                </div>
+              </div>
+                
+              </td>
+              </tr>
+              </tbody>
+
+        </table>
+    </div>
 
             <!-- <div class="prod" (click)="showProduct()"> -->
                 <!-- <div class="img-prod"> -->

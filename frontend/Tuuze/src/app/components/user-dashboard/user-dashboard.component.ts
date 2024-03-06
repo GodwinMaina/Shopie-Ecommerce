@@ -96,6 +96,7 @@ export class UserDashboardComponent {
       quantity: this.productQuantity,
       image: product.image,
     };
+
     // Call the service method to add the product to the cart
     this.api.addProductToCart(productData).subscribe({
       next: (response) => {
@@ -110,6 +111,7 @@ export class UserDashboardComponent {
 
     this.router.navigate(['/cart']);
   }
+  
   viewprod(product_id: string) {
     this.api.getOneProduct(product_id).subscribe((response) => {
       this.selectedProduct = response.message;

@@ -15,41 +15,91 @@ import { UserIdService } from '../../services/user-id.service';
   styleUrl: './cart.component.css',
 })
 export class CartComponent {
+
   cartProducts = this.cartImplement.getItems();
 
-  cartProd: any[] = [];
-  user_id!: string;
+  cartProd: any[]=[];
+  user_id!:string ;
   email!: string;
+  productQuantity!:number;
 
-  constructor(
-    private cartImplement: CartService,
-    private api: AuthServiceService,
-    private user: UserIdService
-  ) 
-  {
-    this.fetchUserCartProducts();
+  constructor(private cartImplement :CartService, private api:AuthServiceService, private user:UserIdService){
+
+
+    this.fetchUserCartProducts()
   }
 
-  remove(product_id: string) {
+  remove(product_id:string){
     this.cartImplement.removeFromCart(product_id);
   }
 
-  plusCart() {}
+  plusCart(){
+    this.productQuantity++;
 
-  minusCart() {}
+  }
+
+  minusCart(){
+    if (this.productQuantity > 0) {
+      this.productQuantity--;
+    }
+
+  }
 
   fetchUserCartProducts(): void {
-    this.user_id = this.user.getUserId() || '';
-    this.api.getUserCart(this.user_id).subscribe((response) => {
+    this.user_id= this.user.getUserId() || '';
+    this.api.getUserCart(this.user_id).subscribe(response=>{
       console.log(response);
 
-      this.cartProd = response.message;
+      this.cartProd= response.message
 
-      this.email = this.user.getEmail() || '';
-    });
+      this.productQuantity=response.message[0].quantity
+
+      this.email=this.user.getEmail() || '';
+
+    })
 
     console.log('cartpage');
-  }
+
+}
+
+// Inside your component
+
+
+  // cartProducts = this.cartImplement.getItems();
+
+  // cartProd: any[] = [];
+  // user_id!: string;
+  // email!: string;
+
+  // constructor(
+  //   private cartImplement: CartService,
+  //   private api: AuthServiceService,
+  //   private user: UserIdService
+  // ) 
+  // {
+  //   this.fetchUserCartProducts();
+  // }
+
+  // remove(product_id: string) {
+  //   this.cartImplement.removeFromCart(product_id);
+  // }
+
+  // plusCart() {}
+
+  // minusCart() {}
+
+  // fetchUserCartProducts(): void {
+  //   this.user_id = this.user.getUserId() || '';
+  //   this.api.getUserCart(this.user_id).subscribe((response) => {
+  //     console.log(response);
+
+  //     this.cartProd = response.message;
+
+  //     this.email = this.user.getEmail() || '';
+  //   });
+
+  //   console.log('cartpage');
+  // }
   // showProductNav() {
   //   let modalBg = document.querySelector(
   //     '.prod-modal-bg-nav'

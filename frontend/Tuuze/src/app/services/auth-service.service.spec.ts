@@ -4,6 +4,7 @@ import { AuthServiceService } from './auth-service.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing'
 import { expectedUsers } from './testdata/user';
 import { expectedProducts } from './testdata/products';
+import { expectedCart } from './testdata/cart';
 
 describe('AuthServiceService', () => {
   let service: AuthServiceService;
@@ -198,4 +199,60 @@ describe('AuthServiceService', () => {
     const mockReq = testingController.expectOne(`http://localhost:4000/products/delete/${id}`)
     expect(mockReq.request.method).toBe('DELETE')
   })
+  it('gets user cart by user id', ()=>{
+    let id='2d894b97-f4f0-4969-bf77-e1be818a60db'
+
+    service.getUserCart(id).subscribe((user:any)=>{
+      expect(user).toBeTruthy();
+      expect(user.cart_id).toBe('2d894b97-f4f0-4969-bf77-e1be8ggdgd0db');
+    })
+
+    const mockReq = testingController.expectOne(`http://localhost:4000/cart/${id}`)
+    mockReq.flush(expectedCart[0])
+    expect(mockReq.request.method).toBe('GET')
+  })
+  it('gets all products in cart', () => {
+    service.getAllUsersCart().subscribe((products: any) => {
+      expect(products).toBeTruthy();
+      expect(products.length).toBe(2);
+    });
+
+    const mockReq = testingController.expectOne('http://localhost:4000/cart/');
+    mockReq.flush(Object.values(expectedCart));
+    expect(mockReq.request.method).toBe('GET');
+  });
+  it('creates a product in a cart', () => {
+      let mockCart={
+          product_id: '72d5bdb0-e76a-42ef-a1d7-c944f93f6e2f',
+          name: 'JEANS BLUE',
+          image:
+            'https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/85/785059/6.jpg?9552',
+          description: 'Blue Denim Jeans',
+          quantity: "500",
+          category: 'Jeans',
+          price: '4,500'
+         }
+    service.addProductToCart(mockCart).subscribe((res) => {
+      expect(res.message).toEqual('Product added in cart successfully');
+    });
+
+    const mockReq = testingController.expectOne(
+      'http://localhost:4000/cart/add'
+    );
+    expect(mockReq.request.method).toEqual('POST');
+    expect(mockReq.request.body).toEqual(mockCart);
+    mockReq.flush({ message: 'Product added in cart successfully' });
+  });
+  it('deletes a product in cart', ()=>{
+    let id = '2d894b97-f4f0-4969-bf77-e1be8ggdgd0db';
+
+    service.deleteCart(id).subscribe((res:any)=>{
+      expect(res).toBeTruthy();
+      expect(res.message).toBe('Product in cart deleted successfully')
+    })
+
+    const mockReq = testingController.expectOne(`http://localhost:4000/cart/delete/:${id}`)
+    expect(mockReq.request.method).toBe('DELETE')
+  })
+  
 });

@@ -163,12 +163,13 @@
   margin-bottom: -50%;
   text-align: center;
   display: none;
+  border: none;
 }
 
 .prod-text:hover {
  cursor: pointer;
  border-radius: 2px ;
- border: 1px solid white;
+ border: none;
 }
 
 .prod:hover {

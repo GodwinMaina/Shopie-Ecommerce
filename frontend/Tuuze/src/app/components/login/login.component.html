@@ -5,6 +5,47 @@
             <div class="login-title">
                 <h1>Login</h1>
             </div>
+            <p style="font-size: 20px; color: red">{{userNotFound}}</p>
+            <div class="email">
+                <label for="">Email</label><br>
+                <input type="email" placeholder="johndoe@gmail.com" class="email-input"  name="email" formControlName="email">
+            </div>
+            <div *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched" class="error-message">
+              Email is required.
+            </div>
+            <div *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched" class="error-message">
+              Invalid email format.
+            </div>
+
+            <div class="email">
+                <label for="">Password</label><br>
+                <input type="password" placeholder="******" class="password" name="password"  formControlName="password">
+            </div>
+            <!-- <p style="font-size: 20px; ;">{{pwdError}}</p> -->
+            <div class="forgot-btn">
+                <a routerLink="/settings" class="forgot-href">Forgot Password</a>
+            </div>
+            <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</div>
+            <div *ngIf="loginForm.get('password')?.errors?.['minlength'] && !loginForm.get('password')?.errors?.['required']">Password must be at least 6 characters long.</div>
+
+            <div class="email">
+                <button class="login-btn">Sign in</button>
+            </div>
+            <div class="forgot-btn">
+                <a class="forgot-href" routerLink="/register">Dont have an account? Click here to sign up</a>
+            </div>
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>
+
+<!-- <app-navbar></app-navbar>
+<div class="main">
+    <div class="login-div">
+        <form class="form"  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="login-title">
+                <h1>Login</h1>
+            </div>
             <div class="email">
                 <label for="">Email</label><br>
                 <input type="email" placeholder="johndoe@gmail.com" class="email-input"  name="email" formControlName="email">
@@ -35,4 +76,4 @@
         </form>
     </div>
 </div>
-<app-footer></app-footer>
+<app-footer></app-footer> -->

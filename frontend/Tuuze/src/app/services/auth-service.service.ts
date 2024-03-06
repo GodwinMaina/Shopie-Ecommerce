@@ -121,7 +121,7 @@ addProductToCart(productData: cartProduct): Observable<any> {
 }
 
 deleteCart(cart_id: string){
-  return this.http.post<{product:cartProduct, error: string}>(`http://localhost:4000/cart/delete/:${cart_id}`,{
+  return this.http.delete<{product:cartProduct, error: string}>(`http://localhost:4000/cart/delete/:${cart_id}`,{
     headers: new HttpHeaders({
       'Content-type': 'application/json'
     })

@@ -11,45 +11,41 @@ import { NavbarComponent } from '../navbar/navbar.component';
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [ CommonModule,RouterLink,FooterComponent, NavbarComponent],
+  imports: [CommonModule, RouterLink, FooterComponent, NavbarComponent],
   templateUrl: './admin-dashboard.component.html',
-  styleUrl: './admin-dashboard.component.css'
+  styleUrl: './admin-dashboard.component.css',
 })
-
-
 export class AdminDashboardComponent {
-
-
   myproducts: any[] = [];
 
-  constructor(public api:AuthServiceService, private router:Router){
-
-    this.api.getAllProduct().subscribe( response=> {
+  constructor(public api: AuthServiceService, private router: Router) {
+    this.api.getAllProduct().subscribe((response) => {
       // console.log(response)
-      this.myproducts=response.message
-      console.log(this.myproducts)
-
-    })
+      this.myproducts = response.message;
+      console.log(this.myproducts);
+    });
   }
 
   deleteProduct(product_id: string): void {
     this.api.deleteProduct(product_id).subscribe(
-      response => {
+      (response) => {
         console.log(response);
 
+        this.api.getAllProduct().subscribe((response) => {
+          // console.log(response)
+          this.myproducts = response.message;
+          console.log(this.myproducts);
+        });
       },
-      error => {
+      (error) => {
         console.error('Error deleting tour:', error);
       }
     );
   }
 
   updateProduct(product_id: string): void {
-      this.router.navigate(['/admin/update-products', product_id]);
+    this.router.navigate(['/admin/update-products', product_id]);
   }
-
-
-
 
   showProduct() {
     let modalBg = document.querySelector('.prod-modal-bg') as HTMLDivElement;
@@ -61,7 +57,4 @@ export class AdminDashboardComponent {
 
     modalBg?.classList.remove('modal-active');
   }
-
-
-
 }

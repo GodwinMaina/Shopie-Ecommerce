@@ -32,7 +32,7 @@
   </div>
 </div> -->
 
-<app-landing-page></app-landing-page>
+<!-- <app-landing-page></app-landing-page>
 <div class="prod-modal-bg-nav">
     <div class="prod-modal">
       <div class="mod-title">
@@ -48,7 +48,7 @@
         <div class="modal-text">
           <div class="mod-cont">
             <div class="modal-desc">
-              <p>{{ product.name }} Jeans at Ksh. {{ product.price }} only</p>
+              <p>{{ product.name }} at Ksh. {{ product.price }} only</p>
               <p>{{ product.description }}</p>
             </div>
             <div class="modal-plus">
@@ -64,4 +64,69 @@
         <button class="checkout-btn">Checkout</button>
       </div>
     </div>
-  </div>
+  </div> -->
+<app-navbar></app-navbar>
+
+<div>
+
+
+  <h1>welcome {{email}}</h1>
+  <h1>Cart</h1>
+
+  <!-- Display the count of items in cart -->
+  <!-- <p>Number of items in cart: 11</p> -->
+
+  <!-- <div *ngFor="let product of cartProducts"> -->
+    <!-- <div style="display: grid; grid-template-columns: repeat(2, 1fr); justify-content: center; align-items: center; border: 2px solid black; width: 800px; margin-bottom: 40px; margin-left: 30px; margin-top: 70px;"> -->
+      <!-- <div> -->
+        <!-- <img style="width: 30%; border-radius: 30px; margin: 30px;" src="{{ product.image }}" alt="" srcset=""> -->
+        <!-- <button (click)="remove(product.product_id)" >Remove item</button> -->
+      <!-- </div> -->
+      <!-- <div> -->
+        <!-- <p>{{ product.description }}</p><br> -->
+        <!-- <!~~ <p>{{ product.category }}</p><br> ~~> -->
+        <!-- <p>{{ product.quantity }}</p><br> -->
+        <!-- <b>{{ product.price }}</b><br> -->
+
+        <!-- <!~~ Styling for buttons ~~> -->
+        <!-- <div style="display: flex; align-items: center;"> -->
+          <!-- <button style="margin-right: 10px; padding: 5px 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px;" (click)="minusCart()">-</button> -->
+          <!-- <span style="margin-right: 10px;">1</span> <!~~ Change this value dynamically based on the quantity ~~> -->
+          <!-- <button style="padding: 5px 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px;" (click)="plusCart()">+</button> -->
+        <!-- </div> -->
+
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </div> -->
+
+
+<div class="cart-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>delete</th>
+        <!-- <th>Category</th> -->
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of cartProd">
+        <td><img src="{{ product.image }}" alt="{{ product.name }}"></td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td style="font-size: 20px;"><button style="margin-right: 10px; width: 30px;cursor: pointer; height: 5vh ;background-color: orange; color: black; border: none; margin-top: 40px;" (click)="minusCart()" class="quantity-btn">-</button>
+       {{productQuantity}}
+        <button style="width: 30px; margin-left: 10px; cursor: pointer; height: 5vh ;background-color: orange; color: black; border: none; margin-top: 40px;"  (click)="plusCart()" class="quantity-btn">+</button></td>
+        <td><button style="width: 30px; margin-left: 10px; cursor: pointer; height: 5vh ; border: none; margin-top: 40px;" class="quantity-btn"  (click)="remove(product.product_id)">delete</button></td>
+        <!-- <td>{{ product.category }}</td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
