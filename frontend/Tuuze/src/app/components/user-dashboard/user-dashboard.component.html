@@ -106,7 +106,7 @@
 
 
         <div class="products">
-            <div class="prod" (click)="showProduct(product.product_id)"  *ngFor="let product of myproducts;  let i = index">
+            <div class="prod" (click)="showProduct()" (click)="viewprod(product.product_id)"  *ngFor="let product of myproducts;  let i = index">
                 <div class="img-prod">
                     <img src="{{product.image}}" alt="" class="prod-img">
                     <button class="prod-text">
@@ -185,14 +185,14 @@
             
             <div class="prod-modal-bg"  *ngFor="let product of selectedProduct;  let i = index">
 
-                <div class="prod-modal" (click)="showProduct(product_id)">
+                <div class="prod-modal" (click)="showProduct()">
                     <div class="modal-img">
                         <img src="{{product.image}}" alt="" class="img-modal">
                     </div>
                     
                     <div class="modal-text">
 
-                        <div class="close-icon" (click)="closeModal($event)">
+                        <div class="close-icon" (click)="closeModal()">
                             <i class="fa-solid fa-circle-xmark" ></i>
                         </div>
                         <div class="mod-cont">
@@ -203,12 +203,12 @@
                               <p>In stock: {{product.quantity}}</p>
                             </div>
                             <div class="modal-plus">
-                                <i class="fa-solid fa-minus"></i>
-                                <p>1</p>
-                                <i class="fa-solid fa-plus" (click)="addToCart(product)"></i>
+                                <i class="fa-solid fa-minus" (click)="minusCart()"></i>
+                                <p>{{productQuantity}}</p>
+                                <i class="fa-solid fa-plus" (click)="plusCart()"></i>
                             </div>
                             <div class="modal-add-cart">
-                                <button class="cart-btn">ADD TO CART</button>
+                                <button class="cart-btn" (click)="addToCart(product)">ADD TO CART</button>
                             </div>
                         </div>    
                     </div>

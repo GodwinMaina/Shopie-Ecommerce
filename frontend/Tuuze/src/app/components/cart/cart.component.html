@@ -1,11 +1,11 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar>
 
 <div>
 
-  <h1>Cart</h1>
+  <h1>Cart</h1> -->
 
   <!-- Display the count of items in cart -->
-  <p>Number of items in cart: {{ cartProducts.length }}</p>
+  <!-- <p>Number of items in cart: {{ cartProducts.length }}</p>
 
   <div *ngFor="let product of cartProducts">
     <div style="display: grid; grid-template-columns: repeat(2, 1fr); justify-content: center; align-items: center; border: 2px solid black; width: 800px; margin-bottom: 40px; margin-left: 30px; margin-top: 70px;">
@@ -14,19 +14,54 @@
         <button >Remove item</button>
       </div>
       <div>
-        <p>{{ product.description }}</p><br>
+        <p>{{ product.description }}</p><br> -->
         <!-- <p>{{ product.category }}</p><br>  -->
-        <p>{{ product.quantity }}</p><br>
-        <b>{{ product.price }}</b><br>
+        <!-- <p>{{ product.quantity }}</p><br>
+        <b>{{ product.price }}</b><br> -->
         
         <!-- Styling for buttons -->
-        <div style="display: flex; align-items: center;">
+        <!-- <div style="display: flex; align-items: center;">
           <button style="margin-right: 10px; padding: 5px 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px;">-</button>
-          <span style="margin-right: 10px;">1</span> <!-- Change this value dynamically based on the quantity -->
-          <button style="padding: 5px 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px;">+</button>
+          <span style="margin-right: 10px;">1</span> -->
+          <!-- Change this value dynamically based on the quantity  not here--> 
+          <!-- <button style="padding: 5px 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px;">+</button>
         </div>
         
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+<app-landing-page></app-landing-page>
+<div class="prod-modal-bg-nav">
+    <div class="prod-modal">
+      <div class="mod-title">
+        <h2>Your Cart</h2>
+        <div class="close-icon" routerLink="/">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </div>
+      </div>
+      <div class="mod-container" *ngFor="let product of cartProd">
+        <div class="modal-img">
+          <img src="{{ product.image }}" alt="{{ product.name }}" class="img-modal" />
+        </div>
+        <div class="modal-text">
+          <div class="mod-cont">
+            <div class="modal-desc">
+              <p>{{ product.name }} Jeans at Ksh. {{ product.price }} only</p>
+              <p>{{ product.description }}</p>
+            </div>
+            <div class="modal-plus">
+              <i class="fa-solid fa-minus"></i>
+              <p>{{ product.quantity }}</p>
+              <i class="fa-solid fa-plus"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mod-checkout">
+        <h2>Total: Ksh.1000</h2>
+        <button class="checkout-btn">Checkout</button>
+      </div>
+    </div>
+  </div>

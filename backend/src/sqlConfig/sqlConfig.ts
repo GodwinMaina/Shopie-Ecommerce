@@ -1,9 +1,9 @@
 
 export const sqlConfig = {
     user:'sa',
-    password:'atopwudan',
-    database: 'SHOPIES',
-    server: 'DESKTOP-8U9CNUE',
+    password:'Nairobi@2023',
+    database: 'Tuuze',
+    server: 'DESKTOP-E5BURTF',
     pool: {
         max: 10,
         min: 0,

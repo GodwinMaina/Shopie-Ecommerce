@@ -9,7 +9,7 @@ Content-Type: application/json
     "image":"https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/85/785059/6.jpg?9552",
     "description":"Blue Denim Jeans",
     "quantity":"500",
-     "price":"4,500",
+    "price":"4,500",
     "category":"Jeans"
    
 }

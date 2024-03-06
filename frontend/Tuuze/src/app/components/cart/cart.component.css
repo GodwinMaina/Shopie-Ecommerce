@@ -38,3 +38,146 @@
 /* span { */
   /* margin-right: 10px; */
 /* } */
+
+.prod-modal-bg-nav {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: start;
+  justify-content: right;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  /* display: none; */
+}
+.modal-active-nav {
+  display: flex;
+}
+.modal-close {
+  display: none;
+}
+.prod-modal {
+  height: 100%;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f3ebff;
+  
+}
+.mod-title {
+  width: 95%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mod-title>h2{
+    width: 50%;
+    margin-left: 2vw;
+}
+.close-icon {
+  display: flex;
+  justify-content: right;
+  align-items: start;
+  margin-top: -5vh;
+}
+.close-icon > i {
+  color: rgb(133, 8, 8);
+  cursor: pointer;
+}
+.close-icon > i:hover {
+  color: red;
+}
+.mod-container{
+    width: 100%;
+    min-height: 70vh;
+    max-height: max-content;
+    display: flex;
+    justify-content: space-around;
+    overflow-y: scroll;
+}
+.modal-img {
+  width: 35%;
+  height: 30vh;
+  border-radius: 10px;
+}
+.img-modal {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: fill;
+}
+.modal-text {
+  width: 50%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mod-cont {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.modal-plus {
+  width: 90%;
+  height: 5vh;
+  background-color: #be97fe;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+}
+.modal-plus > i:hover {
+  color: #b819b0;
+  cursor: pointer;
+}
+.modal-plus > p {
+  font-size: 20px;
+}
+.mod-checkout{
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.checkout-btn{
+    width: 90%;
+    background-color: #be97fe;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+}
+.checkout-btn:hover{
+    background-color: #290a5c;
+    color: white;
+}
+
+@media (max-width:768px) {
+    .prod-modal{
+        width: 80%;
+    }
+    .hambuger{
+        display: block;
+    }
+    .menu{
+        display: none;
+    }
+    .cart2{
+        display: block;
+    }
+}
+@media (max-width:425px) {
+    .prod-modal{
+        width: 95%;
+    }
+}

@@ -1,4 +1,4 @@
-<div class="main">
+<!-- <div class="main">
   <nav class="navbar">
       <div class="nav-items">
           <div class="logo">
@@ -31,4 +31,118 @@
           </div>
       </div>
   </nav>
+</div> -->
+
+<div class="main">
+  <nav class="navbar">
+    <div class="nav-items">
+      <div class="logo">
+        <h1 routerLink="/">TUUZE</h1>
+      </div>
+      <div class="search"></div>
+      <div class="menu">
+        <ul>
+          <li *ngIf="isNotLoggedIn && user && admin">Dashboard</li>
+          <li *ngIf="!admin" routerLink="/admin">Dashboard</li>
+          <li *ngIf="!user" routerLink="/users">Dashboard</li>
+          <li *ngIf="isLoggedIn && admin && user" routerLink="/auth/login">Login</li>
+          <li *ngIf="isLoggedIn && admin && user" routerLink="/register">
+            Register
+          </li>
+          <li *ngIf="isNotLoggedIn && user && admin">Settings</li>
+          <li *ngIf="!user" routerLink="/users/settings">Settings</li>
+          <li *ngIf="!admin" routerLink="/admin/settings">Settings</li>
+          <li *ngIf="isNotLoggedIn && user && admin">Create Product</li>
+          <li *ngIf="!admin" routerLink="/admin/create-products">Create Product</li>
+          <li *ngIf="!admin" routerLink="/admin/view-users">View Users</li>
+          <li>
+            <i class="fa-solid fa-user"></i>
+            Account
+          </li>
+          <!-- <li (click)="showProductNav()" *ngIf="admin"> -->
+          <li routerLink="/cart" *ngIf="admin"> 
+            <i class="fa-solid fa-cart-shopping"></i>
+            Cart
+          </li>
+          <li *ngIf="isNotLoggedIn" routerLink="/auth/login">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+          </li>
+        </ul>
+      </div>
+      <!-- <div class="cart2" (click)="showProductNav()" *ngIf="admin"> -->
+      <div class="cart2" routerLink="/cart" *ngIf="admin">  
+        <i class="fa-solid fa-cart-shopping"></i>
+      </div>
+      <div class="hambuger" (click)="showHamburgerMenu()">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+  <div class="prod-modal-bg-nav">
+    <div class="prod-modal">
+      <div class="mod-title">
+        <h2>Your Cart</h2>
+        <!-- <div class="close-icon" (click)="closeModalNav()"> -->
+        <div class="close-icon">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </div>
+      </div>
+      <div class="mod-container">
+        <div class="modal-img">
+          <img src="../../../assets/carousel 4.jpg" alt="" class="img-modal" />
+        </div>
+        <div class="modal-text">
+          <div class="mod-cont">
+            <div class="modal-desc">
+              <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
+            </div>
+            <div class="modal-plus">
+              <i class="fa-solid fa-minus"></i>
+              <p>2</p>
+              <i class="fa-solid fa-plus"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mod-checkout">
+        <h2>Total: Ksh.1000</h2>
+        <button class="checkout-btn">Checkout</button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile">
+    <div class="mobile-menu">
+      <ul class="hamburger-menu">
+        <li><h2>Menu</h2></li>
+        <li *ngIf="isNotLoggedIn && user && admin">Dashboard</li>
+          <li *ngIf="!admin" routerLink="/admin">Dashboard</li>
+          <li *ngIf="!user" routerLink="/users">Dashboard</li>
+          <li *ngIf="isLoggedIn && admin && user" routerLink="/auth/login">Login</li>
+          <li *ngIf="isLoggedIn && admin && user" routerLink="/register">
+            Register
+          </li>
+          <li *ngIf="isNotLoggedIn && user && admin">Settings</li>
+          <li *ngIf="!user" routerLink="/users/settings">Settings</li>
+          <li *ngIf="!admin" routerLink="/admin/settings">Settings</li>
+          <li *ngIf="isNotLoggedIn && user && admin">Create Product</li>
+          <li *ngIf="!admin" routerLink="/admin/create-products">Create Product</li>
+          <li *ngIf="!admin" routerLink="/admin/view-users">View Users</li>
+          <li>
+            <i class="fa-solid fa-user"></i>
+            Account
+          </li>
+          <li *ngIf="isNotLoggedIn" routerLink="/auth/login">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+          </li>
+        <li>
+          <button class="close-menu-btn" (click)="closeHamburgerMenu()">
+            Close
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
+

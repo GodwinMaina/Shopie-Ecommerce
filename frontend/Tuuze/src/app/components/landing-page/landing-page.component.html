@@ -85,7 +85,23 @@
             <h1>Our Products</h1>
         </div>
         <div class="products">
-            <div class="prod" (click)="showProduct()">
+            <div class="prod" (click)="showProduct()" (click)="viewprod(product.product_id)" *ngFor="let product of myproducts;  let i = index">
+            <div class="img-prod">
+                <img src="{{product.image}}" alt="" class="prod-img">
+                <button (click)="toLogin()" class="prod-text">
+                  <p type="submit" >Add To Cart</p>
+                  <!-- <P type="submit" (click)="addToCart(product)">Add To Cart</P> -->
+                </button>
+            </div>
+            <div class="prod-desc">
+              <p>{{product.name}}</p>
+              <p>{{product.description}}</p>
+              <p> <b> At only Ksh. {{product.price}}</b></p>
+              <p>In stock: {{product.quantity}}</p>
+            </div>
+        </div>
+
+            <!-- <div class="prod" (click)="showProduct()">
                 <div class="img-prod">
                     <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img">
                     <div class="prod-text" routerLink="/login">
@@ -156,11 +172,11 @@
                 <div class="prod-desc">
                     <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
                 </div>
-            </div>
-            <div class="prod-modal-bg">
-                <div class="prod-modal">
+            </div> -->
+            <div class="prod-modal-bg" *ngFor="let product of selectedProduct;  let i = index">
+                <div class="prod-modal" (click)="showProduct()">
                     <div class="modal-img">
-                        <img src="../../../assets/carousel 4.jpg" alt="" class="img-modal">
+                        <img src="{{product.image}}" alt="" class="img-modal">
                     </div>
                     <div class="modal-text">
                         <div class="close-icon" (click)="closeModal()">
@@ -168,14 +184,17 @@
                         </div>
                         <div class="mod-cont">
                             <div class="modal-desc">
-                                <p>Navy Blue Plain Jeans at Ksh. 1000 only</p>
+                                <p>{{product.name}}</p>
+                                <p>{{product.description}}</p>
+                                <p> <b> At only Ksh. {{product.price}}</b></p>
+                                <p>In stock: {{product.quantity}}</p>
                             </div>
                             <div class="modal-plus">
                                 <i class="fa-solid fa-minus"></i>
-                                <p>2</p>
+                                <p>1</p>
                                 <i class="fa-solid fa-plus"></i>
                             </div>
-                            <div class="modal-add-cart">
+                            <div class="modal-add-cart" (click)="toLogin()">
                                 <button class="cart-btn">ADD TO CART</button>
                             </div>
                         </div>

@@ -49,9 +49,10 @@ export const RegisterUser = async (req: Request, res: Response) => {
 
                 if (newUser) {
                     return res.json({
-                        message: "Account created successfully",
+                      message: "Account created successfully",
                     });
-                } else {
+                } 
+                else {
                     return res.json({ error: "An error occurred while registering user." });
                 }
             }

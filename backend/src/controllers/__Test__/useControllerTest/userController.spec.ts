@@ -6,6 +6,7 @@ import { RegisterUser } from '../../userController'
 describe("User Registration", ()=>{
 
     let res: any
+
     beforeEach(()=>{
         res = {
             status: jest.fn().mockReturnThis(),
@@ -19,10 +20,10 @@ describe("User Registration", ()=>{
                 firstName: "Godwin",
                 lastName: "Maina",
                 email: "dogegodwin@gmail.com",
-                password: "atopwudan"
+                password: "root"
             }
         }
-        jest.spyOn(bcrypt, 'hash').mockResolvedValueOnce("H23Pwdkjy" as never)
+        jest.spyOn(bcrypt, 'hash').mockResolvedValueOnce("HashedPwdkjshghgksjgkj" as never)
         const mockedInput = jest.fn().mockReturnThis() //makes it chainable
         const mockedExecute = jest.fn().mockResolvedValue({rowsAffected: [1]})
 
@@ -38,11 +39,6 @@ describe("User Registration", ()=>{
         jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool as never)
         await RegisterUser(req as any, res)
 
-        expect(res.json).toHaveBeenCalledWith({message: "Account created successfully"})
-        
+        expect(res.json).toHaveBeenCalledWith({message: "Account created successfully"})  
     })
-
 })
-
-
-

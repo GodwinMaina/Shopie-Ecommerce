@@ -17,4 +17,4 @@ SELECT *FROM Users
 
 UPDATE Users
 SET isAdmin=1
- WHERE email='compgodwin@gmail.com'
+ WHERE email='chombasheila980@gmail.com'

@@ -33,8 +33,9 @@ export interface oneUser {
       firstName: string,
       lastName: string,
       email: string,
-       password: string}
-      ],
+      password: string
+    }
+  ],
 
   token: [{}],
 

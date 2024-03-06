@@ -1,6 +1,6 @@
 
 export interface createProducts{
-  product_id:string,
+  // product_id:string,
   name:string,
   image:string,
   description:string,
@@ -53,4 +53,30 @@ export interface cartProduct{
   quantity:string,
   category :string,
   price:string,
+}
+export interface cartData {
+  user_id: string;
+  product_id: string;
+  name: string;
+  description: string;
+  price: string;
+  category: string;
+  quantity: any;
+  image: string;
+}
+export interface cartDisplay {
+  message: [
+    {
+      cart_id: string;
+      user_id: string;
+      product_id: string;
+      name: string;
+      description: string;
+      price: string;
+      category: string;
+      quantity: number;
+      image: string;
+    }
+  ];
+  error: string;
 }
