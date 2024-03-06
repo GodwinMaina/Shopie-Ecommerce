@@ -2,8 +2,9 @@
 
 <div>
 
-  <h1>Cart</h1>
+
   <h1>welcome {{email}}</h1>
+  <h1>Cart</h1>
 
   <!-- Display the count of items in cart -->
   <!-- <p>Number of items in cart: 11</p> -->
@@ -42,6 +43,7 @@
         <th>Description</th>
         <th>Price</th>
         <th>Quantity</th>
+        <th>delete</th>
         <!-- <th>Category</th> -->
 
       </tr>
@@ -52,9 +54,10 @@
         <td>{{ product.name }}</td>
         <td>{{ product.description }}</td>
         <td>{{ product.price }}</td>
-        <td><button class="quantity-btn">-</button>
-       {{ product.quantity }}
-        <button  class="quantity-btn">+</button></td>
+        <td style="font-size: 20px;"><button style="margin-right: 10px; width: 30px;cursor: pointer; height: 5vh ;background-color: orange; color: black; border: none; margin-top: 40px;" (click)="minusCart()" class="quantity-btn">-</button>
+       {{productQuantity}}
+        <button style="width: 30px; margin-left: 10px; cursor: pointer; height: 5vh ;background-color: orange; color: black; border: none; margin-top: 40px;"  (click)="plusCart()" class="quantity-btn">+</button></td>
+        <td><button style="width: 30px; margin-left: 10px; cursor: pointer; height: 5vh ; border: none; margin-top: 40px;" class="quantity-btn"  (click)="remove(product.product_id)">delete</button></td>
         <!-- <td>{{ product.category }}</td> -->
       </tr>
     </tbody>

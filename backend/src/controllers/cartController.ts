@@ -97,7 +97,6 @@ export const updateCart = async(req:Request, res: Response)=>{
 
         console.log(result);
         
-
         return res.status(200).json({
             message: "Cart updated successfully"
         })

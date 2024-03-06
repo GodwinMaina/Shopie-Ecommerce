@@ -8,7 +8,7 @@ import { CartService } from '../../services/cart.service';
 import { cartData, cartProduct } from '../../interfaces/createProducts';
 import { FooterComponent } from '../footer/footer.component';
 import { UserIDService } from '../../services/user-id.service';
-
+import {  ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -32,7 +32,7 @@ export class UserDashboardComponent {
   user_id!:string ;
 
 
-  constructor(public api:AuthServiceService, private router:Router,  private cartService: CartService, private user:UserIDService){
+  constructor(public api:AuthServiceService, private router:Router,  private cartService: CartService, private user:UserIDService, private elementRef: ElementRef){
 
     this.api.getAllProduct().subscribe( response=> {
       // console.log(response)
@@ -41,7 +41,6 @@ export class UserDashboardComponent {
 
     })
   }
-
 
   plusCart() {
     this.productQuantity++;
@@ -53,6 +52,20 @@ export class UserDashboardComponent {
       this.productQuantity--;
     }
   }
+
+
+
+  scrollToDiv() {
+    const targetElement = this.elementRef.nativeElement.querySelector('.products-div');
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.error('Target element not found');
+    }
+  }
+
+
+
 
 
 

@@ -35,6 +35,16 @@ export class UserIDService {
     return localStorage.getItem(this.email_key);
   }
 
+  clearUserId(): void {
+    localStorage.removeItem(this.user_id_key);
+  }
+
+
+  clearEmail(): void {
+    localStorage.removeItem(this.email_key);
+  }
+
+
 }
 
 

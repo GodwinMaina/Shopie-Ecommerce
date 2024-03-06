@@ -40,7 +40,7 @@
                 Welcome to Tuuze Shop.<br>
                 At Tuuze, We got you covered.
             </h1>
-            <button  class="collection-btn">VIEW COLLECTION</button>
+            <button (click)="scrollToDiv()"  class="collection-btn">VIEW COLLECTION</button>
         </div>
     </div>
     <div class="carousel">
@@ -98,7 +98,7 @@
         </div>
     </div>
 
-    <div class="products-div">
+    <div  class="products-div">
 
         <div class="prod-title">
             <h1>Our Products</h1>
@@ -116,7 +116,7 @@
                 </div>
                 <div class="prod-desc">
                   <p>{{product.name}}</p>
-                  <p>{{product.description}}</p>
+                  <!-- <p>{{product.description}}</p> -->
                   <p>{{product.category}}</p>
                   <p> <b> At only Ksh. {{product.price}}</b></p>
                   <p>In stock: {{product.quantity}}</p>
@@ -200,7 +200,7 @@
                         <div class="mod-cont">
                             <div class="modal-desc">
                               <p>{{product.name}}</p>
-                              <p>{{product.description}}</p>
+                              <!-- <p>{{product.description}}</p> -->
                               <p> <b> At only Ksh. {{product.price}}</b></p>
                               <p>In stock: {{product.quantity}}</p>
                             </div>

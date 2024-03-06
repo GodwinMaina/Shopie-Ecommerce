@@ -19,6 +19,8 @@ export const routes: Routes = [
   { path: 'admin/create-products', component: AdminCreateProductsComponent },
   { path: 'admin/update-products/:product_id', component: AdminUpdateProductsComponent },
   { path: 'admin/view-users', component: AdminViewUsersComponent },
+  { path: 'admin/settings', component: ChangePasswordComponent },
+  { path: 'users/settings', component: ChangePasswordComponent },
   { path: 'settings', component: ChangePasswordComponent },
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'users', component: UserDashboardComponent },

@@ -6,7 +6,7 @@ import { allProductsGet } from '../../interfaces/createProducts';
 import { response } from 'express';
 import { FooterComponent } from '../footer/footer.component';
 import { NavbarComponent } from '../navbar/navbar.component';
-
+import {  ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -22,7 +22,7 @@ export class AdminDashboardComponent {
 
   myproducts: any[] = [];
 
-  constructor(public api:AuthServiceService, private router:Router){
+  constructor(public api:AuthServiceService, private router:Router,private elementRef: ElementRef){
 
     this.api.getAllProduct().subscribe( response=> {
       // console.log(response)
@@ -37,17 +37,24 @@ export class AdminDashboardComponent {
       response => {
         console.log(response);
 
+        this.api.getAllProduct().subscribe( response=> {
+          // console.log(response)
+          this.myproducts=response.message
+          console.log(this.myproducts)
+
+        })
+
       },
       error => {
         console.error('Error deleting tour:', error);
       }
     );
+
   }
 
   updateProduct(product_id: string): void {
       this.router.navigate(['/admin/update-products', product_id]);
   }
-
 
 
 
@@ -62,6 +69,16 @@ export class AdminDashboardComponent {
     modalBg?.classList.remove('modal-active');
   }
 
+
+
+  scrollToDiv() {
+    const targetElement = this.elementRef.nativeElement.querySelector('.products-div');
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.error('Target element not found');
+    }
+  }
 
 
 }

@@ -19,6 +19,7 @@ export class CartComponent {
   cartProd: any[]=[];
   user_id!:string ;
   email!: string;
+  productQuantity!:number;
 
   constructor(private cartImplement :CartService, private api:AuthServiceService, private user:UserIDService){
 
@@ -31,15 +32,16 @@ export class CartComponent {
   }
 
   plusCart(){
+    this.productQuantity++;
 
   }
 
   minusCart(){
+    if (this.productQuantity > 0) {
+      this.productQuantity--;
+    }
 
   }
-
-
-
 
   fetchUserCartProducts(): void {
     this.user_id= this.user.getUserId() || '';
@@ -48,12 +50,13 @@ export class CartComponent {
 
       this.cartProd= response.message
 
+      this.productQuantity=response.message[0].quantity
+
       this.email=this.user.getEmail() || '';
 
     })
 
     console.log('cartpage');
-
 
 }
 
