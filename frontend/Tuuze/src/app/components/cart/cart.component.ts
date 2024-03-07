@@ -189,6 +189,11 @@ removeCarty(cart_id:string){
   )
 }
 
+logOut(){
+  this.router.navigate(["/auth/login"])
+  this.user.clearUserId()
+  this.user.clearEmail()
+}
 
 
 

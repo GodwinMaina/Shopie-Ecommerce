@@ -39,14 +39,30 @@
   /* margin-right: 10px; */
 /* } */
 
+.cartH1{
+  text-align: center;
+  list-style: none;
+  display:flex;
+  justify-content: space-between;
+  margin-inline: 50px;
+  font-size: 20px;
+  cursor: pointer;
 
+}
+
+.cartH1 h1{
+  font-size: 20px;
+  margin-left: 90px;
+}
 .cart-table {
   margin-top: 20px;
   /* margin: 50px; */
+  display: flex;
+  justify-content: center;
 }
 
 table {
-  width: 70%;
+  width: 80%;
   border-collapse: collapse;
 }
 

@@ -1,0 +1,11 @@
+[
+  {
+    "email": "compgodwin@gmail.com",
+    "password": "123456"
+  }
+  ,
+  {
+      "email": "compgodwin@gmail.com",
+      "password": "wrongpassword"
+  }
+]

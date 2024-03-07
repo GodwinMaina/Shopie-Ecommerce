@@ -57,14 +57,14 @@
           <li *ngIf="!admin" routerLink="/admin/view-users">View Users</li>
           <li>
             <i class="fa-solid fa-user"></i>
-            {{email}} 
+            {{email}}
           </li>
           <!-- <li (click)="showProductNav()" *ngIf="admin"> -->
           <li routerLink="/cart" *ngIf="admin">
             <i class="fa-solid fa-cart-shopping"></i>
             Cart
           </li>
-          <li *ngIf="isNotLoggedIn" (click)="logOut()">
+          <li data-cy="logout-link" *ngIf="isNotLoggedIn" (click)="logOut()">
             <i class="fa-solid fa-right-from-bracket"></i>
             Logout
           </li>
