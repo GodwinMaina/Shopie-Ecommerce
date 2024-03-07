@@ -38,6 +38,8 @@
 /* span { */
   /* margin-right: 10px; */
 /* } */
+
+
 .cart-table {
   margin-top: 20px;
   /* margin: 50px; */
@@ -58,13 +60,14 @@ th {
   background-color: #f2f2f2;
 }
 
+
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-tr:hover {
-  background-color: #ddd;
-}
+/* tr:hover { */
+  /* background-color: #ddd; */
+/* } */
 
 img {
   max-width: 100px;

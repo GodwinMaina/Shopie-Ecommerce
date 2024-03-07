@@ -42,17 +42,18 @@ export class UserDashboardComponent {
     })
   }
 
-  plusCart() {
+  plusCart(){
     this.productQuantity++;
+
   }
 
 
-  minusCart() {
+  minusCart(){
     if (this.productQuantity > 0) {
       this.productQuantity--;
     }
-  }
 
+  }
 
 
   scrollToDiv() {
@@ -63,40 +64,6 @@ export class UserDashboardComponent {
       console.error('Target element not found');
     }
   }
-
-
-
-
-
-
-//     addToCart(product: cartProduct): void {
-
-//     // const cartItems = this.cartService.getItems();
-//     // const existsInCart = cartItems.some(item => item.product_id === product.product_id);
-//     // if (!existsInCart) {
-//     //   // If product does not exist in cart, add it
-//     //   this.cartService.addToCart(product);
-//     //   window.alert('Product added to cart')
-
-
-//     // }
-
-//     this.user_id = this.user.getUserId() || '';
-//    console.log('User_id for logged user is:', this.user_id);
-
-//    const data = {
-//      user_id:this.user_id,
-//      product: product
-//     };
-
-//   this.api.addProductToCart(data).subscribe(response=>{
-//   console.log(response);
-
-//    })
-
-//     this.router.navigate(['/cart']);
-
-//  }
 
 
  addToCart(product: cartProduct): void {
@@ -135,32 +102,6 @@ export class UserDashboardComponent {
 
 
 
-
-  // private cartKeyValue = 'cartItems';
-  // CartItems: cartProduct[] = [];
-
-  // addToCart(product: cartProduct) {
-  //   // Check if the product already exists in the cart
-  //   const existingProductIndex = this.cartService.getItems().findIndex(item => item.product_id === product.product_id);
-
-  //   if (existingProductIndex !== -1) {
-  //     // If the product exists, update its quantity
-  //     this.cartService.getItems()[existingProductIndex].quantity += this.productQuantity;
-  //   } else {
-  //     // If the product does not exist, add it to the cart with the current quantity
-  //     product.quantity = this.productQuantity;
-  //     this.cartService.addToCart(product);
-  //   }
-
-  //   // Reset product quantity after adding to cart to 0
-  //   this.productQuantity = 0;
-  //   this.closeModal()
-  //   this.router.navigate(['/cart'])
-  // }
-
-
-
-
   viewprod(product_id: string){
     this.api.getOneProduct(product_id).subscribe(response => {
       this.selectedProduct= response.message;
@@ -183,6 +124,52 @@ export class UserDashboardComponent {
     console.log('closeddd');
 }
 
+
+// add to cart logic 2
+
+addToCartLogic2(product: cartProduct): void {
+
+  this.user_id= this.user.getUserId() || '';
+
+  console.log(this.user_id);
+
+  const productData: cartData = {
+    user_id: this.user_id,
+    product_id: product.product_id,
+    name: product.name,
+    category: product.category,
+    description: product.description,
+    price: product.price,
+    quantity:this.productQuantity,
+    image: product.image
+  };
+  this.fetchylogic2()
+
+  this.api.addToCartlogic2(productData).subscribe({
+    next: (response) => {
+      console.log('Product added to cart:', response);
+    },
+    error: (err) => {
+      console.error('Error adding product to cart:', err);
+    }
+  });
+
+  this.router.navigate(['/cart'])
+  this.fetchylogic2()
+}
+
+
+fetchylogic2(): void {
+  this.user_id= this.user.getUserId() || '';
+  this.api.getCartyLogic2(this.user_id).subscribe(response=>{
+    console.log(response);
+
+
+  })
+
+  console.log('cartpagelog2');
+
+}
 
 }
 

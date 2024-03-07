@@ -1,35 +1,4 @@
 
-<!-- <p>user-dashboard-works</p> -->
-
-
-<!-- <button >get all product</button> -->
-<!-- <button>view one product by Id</button> -->
-<!-- <button routerLink="/settings">settings</button> -->
-<!-- <br><br> -->
-
-<!-- <app-navbar></app-navbar> -->
-<!-- <div style="margin-inline:30px;display:grid; grid-template-columns: repeat(3,1fr); margin-top:100px;" > -->
-  <!-- <div  *ngFor="let product of myproducts;  let i = index"> -->
-
-    <!-- <div style="margin-top:50px; height: 100%;" (click)="viewProductModal(product.product_id)"> -->
-      <!-- <h4 style="display: inline-block;">name:</h4> <p style="display: inline-block;">{{product.name}}</p><br> -->
-      <!-- <div> -->
-        <!-- <div style="display: flex; align-items: center;"> -->
-          <!-- <h4 style="margin-right: 10px;">image:</h4> -->
-          <!-- <img style="width: 40px;" src="{{product.image}}" alt="" srcset=""> -->
-        <!-- </div><br> -->
-      <!-- <h4 style="display: inline-block;">description:</h4> <p style="display: inline-block;">{{product.description}}</p><br> -->
-      <!-- <!~~ <h4 style="display: inline-block;">category:</h4> <p style="display: inline-block;">{{product.category}}</p><br> ~~> -->
-      <!-- <h4 style="display: inline-block;">in Stock:</h4> <p style="display: inline-block;">{{product.quantity}}</p><br> -->
-      <!-- <h4 style="display: inline-block;">price:</h4> <p style="display: inline-block;">{{product.price}}</p><br> -->
-    <!-- </div> -->
-<!-- </div> -->
-
-<!-- </div> -->
-
-<!-- <div  *ngFor="let product of myproducts;  let i = index"> -->
-<!-- <button type="submit" (click)="addToCart(product)">Add To Cart</button> -->
-<!-- </div> -->
 
 <app-navbar></app-navbar>
 <div class="main">
@@ -124,67 +93,6 @@
             </div>
 
 
-            <!-- <div class="prod" (click)="showProduct()"> -->
-                <!-- <div class="img-prod"> -->
-                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
-                    <!-- <div class="prod-text"> -->
-                        <!-- <p>ADD TO CART</p> -->
-                    <!-- </div> -->
-                <!-- </div> -->
-
-                <!-- <div class="prod-desc"> -->
-                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
-                <!-- </div> -->
-            <!-- </div> -->
-            <!-- <div class="prod" (click)="showProduct()"> -->
-                <!-- <div class="img-prod"> -->
-                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
-                    <!-- <div class="prod-text"> -->
-                        <!-- <p>ADD TO CART</p> -->
-                    <!-- </div> -->
-                <!-- </div> -->
-
-                <!-- <div class="prod-desc"> -->
-                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
-                <!-- </div> -->
-            <!-- </div> -->
-            <!-- <div class="prod" (click)="showProduct()"> -->
-                <!-- <div class="img-prod"> -->
-                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
-                    <!-- <div class="prod-text"> -->
-                        <!-- <p>ADD TO CART</p> -->
-                    <!-- </div> -->
-                <!-- </div> -->
-
-                <!-- <div class="prod-desc"> -->
-                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
-                <!-- </div> -->
-            <!-- </div> -->
-            <!-- <div class="prod" (click)="showProduct()"> -->
-                <!-- <div class="img-prod"> -->
-                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
-                    <!-- <div class="prod-text"> -->
-                        <!-- <p>ADD TO CART</p> -->
-                    <!-- </div> -->
-                <!-- </div> -->
-
-                <!-- <div class="prod-desc"> -->
-                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
-                <!-- </div> -->
-            <!-- </div> -->
-            <!-- <div class="prod" (click)="showProduct()"> -->
-                <!-- <div class="img-prod"> -->
-                    <!-- <img src="../../../assets/carousel 4.jpg" alt="" class="prod-img"> -->
-                    <!-- <div class="prod-text"> -->
-                        <!-- <p>ADD TO CART</p> -->
-                    <!-- </div> -->
-                <!-- </div> -->
-
-                <!-- <div class="prod-desc"> -->
-                    <!-- <p>Navy Blue Plain Jeans at Ksh. 1000 only</p> -->
-                <!-- </div> -->
-            <!-- </div> -->
-
 
             <div class="prod-modal-bg"  *ngFor="let product of selectedProduct;  let i = index">
 
@@ -210,14 +118,12 @@
                                 <i class="fa-solid fa-plus" (click)="plusCart()"></i>
                             </div>
                             <div class="modal-add-cart">
-                                <button class="cart-btn" (click)="addToCart(product)">ADD TO CART</button>
+                                <button class="cart-btn" (click)="addToCartLogic2(product)">ADD TO CART</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
 
 
         </div>

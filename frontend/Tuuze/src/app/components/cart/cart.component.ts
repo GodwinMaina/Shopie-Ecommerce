@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { AuthServiceService } from '../../services/auth-service.service';
 import { UserIDService } from '../../services/user-id.service';
+import {  cartProduct} from '../../interfaces/createProducts';
+import { cartData } from '../../interfaces/createProducts';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -21,20 +24,36 @@ export class CartComponent {
   email!: string;
   productQuantity!:number;
 
-  constructor(private cartImplement :CartService, private api:AuthServiceService, private user:UserIDService){
+
+   // logic2
+   cartlog2:any[]=[];
+   productlog2!:number;
+
+  constructor(private cartImplement :CartService, private api:AuthServiceService, private user:UserIDService, private router:Router){
 
 
-    this.fetchUserCartProducts()
+    // this.fetchUserCartProducts()
+
+    // logic2
+    this.fetchylogic2()
   }
 
-  remove(product_id:string){
-    this.cartImplement.removeFromCart(product_id);
+  //remove item from cart
+  remove(cart_id:string){
+    this.api.deleteCart(cart_id).subscribe(
+      response=>{
+        console.log(response.message);
+        this.fetchUserCartProducts();
+      }
+    )
   }
+
 
   plusCart(){
     this.productQuantity++;
 
   }
+
 
   minusCart(){
     if (this.productQuantity > 0) {
@@ -60,104 +79,120 @@ export class CartComponent {
 
 }
 
-// Inside your component
+
+
+
+addToCart(product: cartProduct): void {
+  // Get the user ID from your AuthServiceService
+  this.user_id= this.user.getUserId() || '';
+
+  console.log(this.user_id);
+
+console.log('123456789');
+
+  // Prepare the product data
+  const productData: cartData = {
+    user_id: this.user_id,
+    product_id: product.product_id,
+    name: product.name,
+    category: product.category,
+    description: product.description,
+    price: product.price,
+    quantity: this.productQuantity,
+    image: product.image
+  };
+
+  this.fetchUserCartProducts()
+
+  this.api.addProductToCart(productData).subscribe({
+    next: (response) => {
+      console.log('Product added to cart:', response);
+    },
+    error: (err) => {
+      console.error('Error adding product to cart:', err);
+    }
+  });
+  this.fetchUserCartProducts()
+}
+
+
+
+
+
+// logic 2
+
+
+fetchylogic2(): void {
+  this.user_id= this.user.getUserId() || '';
+  this.api.getCartyLogic2(this.user_id).subscribe(response=>{
+    console.log(response);
+
+    this.cartlog2= response.message
+
+    this.productQuantity=response.message[0].quantity
+
+    this.email=this.user.getEmail() || '';
+
+  })
+
+  console.log('cartpagelog2');
+
+}
+
+
+
+
+
+
+addToCartLog2(product: cartProduct): void {
+  // Get the user ID from your AuthServiceService
+  this.user_id= this.user.getUserId() || '';
+
+  console.log(this.user_id);
+
+console.log('123456789');
+
+  // Prepare the product data
+  const productData: cartData = {
+    user_id: this.user_id,
+    product_id: product.product_id,
+    name: product.name,
+    category: product.category,
+    description: product.description,
+    price: product.price,
+    quantity: this.productQuantity,
+    image: product.image
+  };
+
+   this.fetchylogic2()
+
+  this.api.addToCartlogic2(productData).subscribe({
+    next: (response) => {
+      console.log('Product added to cart:', response);
+    },
+    error: (err) => {
+      console.error('Error adding product to cart:', err);
+    }
+  });
+  this.fetchylogic2()
+}
+
+
+
+
+removeCarty(cart_id:string){
+  this.api.deleteCarty(cart_id).subscribe(
+    response=>{
+      console.log(response);
+      this.fetchylogic2();
+    }
+  )
+}
+
+
+
 
 
  }
 
-
-
-// import { Component, OnInit  } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-// import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router'
-// // import { Rating } from '../../interfaces/cartInterface'
-// // import { createProducts } from '../../interfaces/createProducts';
-// import { AuthServiceService } from '../../services/auth-service.service';
-
-// import { NavbarComponent } from '../navbar/navbar.component';
-// import { CartMainService } from '../../services/cart-main.service';
-// import { UserIDService } from '../../services/user-id.service';
-
-
-// @Component({
-//   selector: 'app-cart-modal',
-//   standalone: true,
-//   imports: [ CommonModule, RouterLink, RouterOutlet, NavbarComponent],
-//   templateUrl: './cart.component.html',
-//  styleUrl: './cart.component.css'
-// })
-
-// export class CartComponent  implements OnInit {
-
-//   cartItems:  any[] = [];
-//   isCartOpen: boolean = false;
-//   user_id: string | null | undefined;
-
-//   constructor(private api: UserIDService, private router: Router, private cartService: CartMainService, private auth:AuthServiceService) {  }
-//   ngOnInit() {
-//     // Subscribe to cart items changes
-//     this.cartService.cart$.subscribe(cart => {
-//       this.cartItems = cart;
-//     });
-
-//     // Subscribe to cart open status changes
-//     this.cartService.isCartOpen$.subscribe(isOpen => {
-//       console.log('Is cart open?', isOpen);
-//       this.isCartOpen = isOpen;
-//     });
-
-//     // Retrieve user_id
-//     this.user_id = this.api.getUserId();
-//     console.log('User ID:', this.user_id);
-
-//     console.log('am in cart page');
-
-
-//     // Check if user_id is not null before calling fetchSingleCart
-//     if (this.user_id !== null) {
-//       console.log('Fetching cart for user_id:', this.user_id);
-//       this.fetchSingleCart(this.user_id);
-//     } else {
-//       console.warn('User ID is null. Cannot fetch cart.');
-//     }
-//   }
-
-//   fetchSingleCart(user_id: string) {
-//     console.log(user_id);
-
-//     this.auth.getUserCart(user_id).subscribe(
-//       (res) => {
-//         console.log('API Response:', res);
-
-//         if (res && res.cart && res.cart.length > 0) {
-//           console.log('Fetched Single Cart:', res.cart[0]);
-//           const productsArray = JSON.parse(res.cart[0].products);
-//           this.cartItems = productsArray
-//         } else {
-//           console.error('Invalid response or no cart found:', res);
-//         }
-//       },
-//       (error) => {
-//         console.error('Error fetching single cart:', error);
-//       },
-//       () => {
-//         console.log('Fetch operation completed.');
-//       }
-//     );
-//   }
-
-
-//   getTotalItems(): number {
-//     return this.cartItems.reduce((total, cart) => total + cart.products.length, 0);
-//   }
-
-//   checkout() {
-//     console.log('Checking out...');
-//   }
-
-//   closeCart() {
-//     console.log('Closing cart...');
-//   }
-
-// }
 

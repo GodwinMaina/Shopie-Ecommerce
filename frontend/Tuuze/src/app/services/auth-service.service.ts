@@ -96,13 +96,11 @@ deleteProduct(product_id:string){
 //........End Of products http Authservices........
 
 
+
  //cart services
 
  getUserCart(user_id: string){
   return this.http.get<cartDisplay>(`http://localhost:4000/cart/${user_id}`,{
-    // headers: new HttpHeaders({
-    //   'Content-type': 'application/json'
-    // })
   })
 }
 
@@ -114,6 +112,13 @@ getAllUsersCart(){
   })
 }
 
+//remove from cart logic
+deleteCart(cart_id: string) {
+  return this.http.delete<{ message: string, error: string }>(`http://localhost:4000/cart/delete/${cart_id}`);
+}
+
+
+// logic 1 add to cart previous working
 addProductToCart(productData: cartProduct): Observable<any> {
   const url = 'http://localhost:4000/cart/add';
   return this.http.post<any>(url, productData, {
@@ -123,14 +128,32 @@ addProductToCart(productData: cartProduct): Observable<any> {
   });
 }
 
-deleteCart(cart_id: string){
-  return this.http.post<{product:cartProduct, error: string}>(`http://localhost:4000/cart/delete/:${cart_id}`,{
+
+
+//logics 2
+// logic 2 add to cart
+
+addToCartlogic2(productData: cartProduct): Observable<any> {
+  const url = 'http://localhost:4000/cart/carty/';
+  return this.http.post<any>(url, productData, {
     headers: new HttpHeaders({
-      'Content-type': 'application/json'
+      'Content-Type': 'application/json'
     })
+  });
+}
+
+getCartyLogic2(user_id: string){
+  return this.http.get<cartDisplay>(`http://localhost:4000/cart/getCarty/${user_id}`,{
   })
 }
 
 
+//remove from cart logic
+deleteCarty(cart_id: string) {
+  return this.http.delete<{ message: string, error: string }>(`http://localhost:4000/cart/carty/delete/${cart_id}`);
+}
 
 }
+
+
+
