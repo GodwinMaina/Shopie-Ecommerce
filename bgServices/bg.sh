@@ -18,6 +18,7 @@ node_packages=(
     "express"
     "joi"
     "jsonwebtoken"
+    "cloudinary"
     "mssql"
     "nodemailer"
     "nodemon"
