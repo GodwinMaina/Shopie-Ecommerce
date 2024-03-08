@@ -155,5 +155,3 @@ deleteCarty(cart_id: string) {
 
 }
 
-
-

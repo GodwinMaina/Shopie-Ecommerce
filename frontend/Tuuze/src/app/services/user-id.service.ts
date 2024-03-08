@@ -13,6 +13,7 @@ export class UserIDService {
   // private user_id: string | null = null;
 
   private user_id_key = 'user_id';
+  private firstName_key = 'firstName';
   private email_key = 'user_email';
 
   // private email:string | null = null;
@@ -42,6 +43,15 @@ export class UserIDService {
 
   clearEmail(): void {
     localStorage.removeItem(this.email_key);
+  }
+
+
+  setName(firstName: string): void {
+    localStorage.setItem(this.firstName_key, firstName);
+  }
+
+  getName(): string | null {
+    return localStorage.getItem(this.firstName_key);
   }
 
 
