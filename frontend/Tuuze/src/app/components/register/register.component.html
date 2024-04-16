@@ -8,7 +8,7 @@
 
             <div class="email">
                 <label for="">First Name</label><br>
-                <input type="text" placeholder="John" name="firstName" formControlName="firstName" class="email-input">
+                <input data-cy="firstName" type="text" placeholder="John" name="firstName" formControlName="firstName" class="email-input">
                 <div *ngIf="registerForm.get('firstName')?.errors?.['required'] && registerForm.get('firstName')?.touched" class="error-message">
                   firstName required.
                 </div>
@@ -16,7 +16,7 @@
 
             <div class="email">
                 <label for="">Last Name</label><br>
-                <input type="text" placeholder="Doe" name="lastName" formControlName="lastName" class="password">
+                <input data-cy="lastName" type="text" placeholder="Doe" name="lastName" formControlName="lastName" class="password">
             </div>
             <div *ngIf="registerForm.get('lastName')?.errors?.['required'] && registerForm.get('lastName')?.touched" class="error-message">
               lastName required.
@@ -24,7 +24,7 @@
 
             <div class="email">
                 <label for="">Email</label><br>
-                <input type="email" placeholder="johndoe@gmail.com" name="email"  formControlName="email" class="email-input">
+                <input data-cy="email" type="email" placeholder="johndoe@gmail.com" name="email"  formControlName="email" class="email-input">
             </div>
              <div *ngIf="registerForm.get('email')?.errors?.['required'] && registerForm.get('email')?.touched" class="error-message">
           Email is required.
@@ -35,7 +35,7 @@
 
             <div class="email">
                 <label for="">Password</label><br>
-                <input type="password" placeholder="******" name="password" formControlName="password" class="password">
+                <input data-cy="password" type="password" placeholder="******" name="password" formControlName="password" class="password">
             </div>
             <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
               <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</div>
@@ -52,7 +52,7 @@
             </div>
 
             <div class="email">
-                <button class="login-btn" type="submit" [disabled]="registerForm.invalid">Sign up</button>
+                <button data-cy="sign-btn" class="login-btn" type="submit">Sign up</button>
             </div>
 
             <div class="forgot-btn">

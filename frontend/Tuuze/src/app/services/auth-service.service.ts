@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { allUsers, oneUser, userRegister } from '../interfaces/userRegister';
 import { userLogin } from '../interfaces/userLogin';
-import {  allProductsGet, createProducts, oneProductsGet } from '../interfaces/createProducts';
+import {  allProductsGet, cartDisplay, cartProduct, createProducts, oneProductsGet } from '../interfaces/createProducts';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -22,10 +23,11 @@ export class AuthServiceService {
   //loginUser
   loginUser(email: string, password: string){
     const userLogs:userLogin ={email:email, password:password};
-    return this.http.post<{
-      isAdmin: any; message: string, error: string
-}>('http://localhost:4000/users/auth/login', userLogs);
+    return this.http.post<{isAdmin: any; message: string, error: string}>('http://localhost:4000/users/auth/login', userLogs);
   };
+
+
+
 
   //deleteUser
   deleteUser(user_id: string){
@@ -93,4 +95,63 @@ deleteProduct(product_id:string){
 
 //........End Of products http Authservices........
 
+
+
+ //cart services
+
+ getUserCart(user_id: string){
+  return this.http.get<cartDisplay>(`http://localhost:4000/cart/${user_id}`,{
+  })
 }
+
+getAllUsersCart(){
+  return this.http.get<{product:cartProduct, error: string}>('http://localhost:4000/cart/',{
+    headers: new HttpHeaders({
+      'Content-type': 'application/json'
+    })
+  })
+}
+
+//remove from cart logic
+deleteCart(cart_id: string) {
+  return this.http.delete<{ message: string, error: string }>(`http://localhost:4000/cart/delete/${cart_id}`);
+}
+
+
+// logic 1 add to cart previous working
+addProductToCart(productData: cartProduct): Observable<any> {
+  const url = 'http://localhost:4000/cart/add';
+  return this.http.post<any>(url, productData, {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  });
+}
+
+
+
+//logics 2
+// logic 2 add to cart
+
+addToCartlogic2(productData: cartProduct): Observable<any> {
+  const url = 'http://localhost:4000/cart/carty/';
+  return this.http.post<any>(url, productData, {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  });
+}
+
+getCartyLogic2(user_id: string){
+  return this.http.get<cartDisplay>(`http://localhost:4000/cart/getCarty/${user_id}`,{
+  })
+}
+
+
+//remove from cart logic
+deleteCarty(cart_id: string) {
+  return this.http.delete<{ message: string, error: string }>(`http://localhost:4000/cart/carty/delete/${cart_id}`);
+}
+
+}
+

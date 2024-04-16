@@ -2,6 +2,7 @@
 import joi from 'joi'
 
 export const createProductsValidator  = joi.object({
+    
     name :joi.string().required(),
     image:joi.string().required(),
     description:joi.string().required(),

@@ -15,7 +15,7 @@ export const loginUser = async (req: Request, res: Response)=>{
         let {error} = loginUserSchema.validate(req.body)
 
         if(error){
-            return res.status(404).json({
+            return res.json({
                 error: error.details[0].message
             })
         }
@@ -36,7 +36,7 @@ export const loginUser = async (req: Request, res: Response)=>{
             const correct_pwd = await bcrypt.compare(password, user[0].password)
 
             if(!correct_pwd){
-                return res.status(401).json({
+                return res.json({
                     error: "Incorrect password"
                 })
             }
@@ -59,7 +59,7 @@ export const loginUser = async (req: Request, res: Response)=>{
 
         }else{
             return res.json({
-                error: "User not found"
+                error: "User not found/Email "
             })
         }
         

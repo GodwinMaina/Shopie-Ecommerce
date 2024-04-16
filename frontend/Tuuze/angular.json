@@ -92,7 +92,10 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            
+            "scripts": [],
+            "karmaConfig": "karma.config.js",
+            "codeCoverage": true
           }
         }
       }
